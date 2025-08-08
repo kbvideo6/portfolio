@@ -1,4 +1,4 @@
-import HeroImg from "@/assets/images/IMG_0350.jpg";
+import HeroImg from "@/assets/images/IMG_0350.JPG";
 import LogoT from "@/assets/images/logo_t.png";
 
 export default function About() {
