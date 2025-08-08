@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer base {
+ 
+
+  .dark {
+    /* Dark mode - purple, pink, black, white */
+    --background: 0 0% 7%; /* very dark gray/black */
+    --foreground: 0 0% 98%; /* near white */
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 270 70% 60%; /* Purple */
+    --primary-foreground: 0 0% 100%; /* White text on purple */
+
+    --secondary: 320 80% 65%; /* Pink */
+    --secondary-foreground: 0 0% 100%; /* White text on pink */
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 280 60% 50%; /* Softer purple accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 80% 60%; /* Red for destructive actions */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 50% 30%; /* Darker purple border */
+    --input: 0 0% 18%;
+    --ring: 270 70% 60%; /* Ring matches primary */
+
+    --chart-1: 320 80% 65%; /* Pink */
+    --chart-2: 270 70% 60%; /* Purple */
+    --chart-3: 280 60% 50%; /* Accent purple */
+    --chart-4: 0 0% 100%; /* White */
+    --chart-5: 0 0% 10%; /* Black */
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(270deg, #e11d48, #6366f1, #ec4899, #fff, #0a0a0a);
+  background-size: 300% auto;
+  animation: gradient-shift 8s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(45deg, #ec4899,#fff, #0a0a0a);
+  padding: 1px;
+  border-radius: 0.75rem;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, #e11d48, #6366f1, #ec4899);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.code-window {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.window-header {
+  background: linear-gradient(-90deg, #020202cc, #33333bcc);
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.window-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dfdfdf, #f5ccff, #d8d8d8);
+  transition: transform 0.3s ease;
+}
+
+.window-dot:hover {
+  transform: scale(1.2);
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.typing-effect::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+  color: #60a5fa;
+}
+
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Enhanced Prism.js styling */
+pre[class*="language-"] {
+  background: #191818 !important;
+  padding: 1.5rem !important;
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+}
+
+.token.comment {
+  color: #00439b !important;
+  font-style: italic;
+}
+
+.token.string {
+  color: #0083ef !important;
+}
+
+.token.keyword {
+  color: #e10080 !important;
+}
+
+.token.function {
+  color: #acb202 !important;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+/* Add these classes to adjust the grid colors in the top-left and bottom-right */
+.top-left-grid {
+  background: linear-gradient(135deg, #ec4899 0%, #e11d48 50%, #6366f1 100%);
+  opacity: 0.7;
+}
+
+.bottom-right-grid {
+  background: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #fff 100%);
+  opacity: 0.7;
+}
