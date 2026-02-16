@@ -100,7 +100,7 @@ const engineer = {
 
   return (
     <>
-      <main className="bg-[#090909] text-white min-h-screen pb-20 md:pb-8">
+      <main className="bg-[#090909] text-white min-h-screen pb-24 md:pb-20">
         <section
           className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 pt-4 md:pt-8 lg:pt-0 hero-section-padding"
           style={{ paddingTop: "var(--hero-padding-top, 0)" }}

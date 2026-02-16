@@ -4,7 +4,7 @@ import LogoT from "@/assets/images/logo_t.png";
 export default function About() {
   return (
     <>
-      <section id="about" className="py-20 md:py-32 pb-24 md:pb-32 text-white bg-[#04081A]">
+      <section id="about" className="pt-4 md:pt-6 pb-24 md:pb-20 text-white bg-[#04081A]">
         <div className="mx-auto max-w-5xl space-y-8 px-6 md:px-8 md:space-y-16">
           <h2 className="relative z-10 max-w-4xl text-4xl font-medium lg:text-5xl text-white font-mono">
             Full-Stack Engineer: From <span className="text-blue-400">PCB Layout</span> to <span className="text-green-400">Cloud APIs</span>

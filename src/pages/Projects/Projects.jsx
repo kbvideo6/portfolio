@@ -46,7 +46,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <main className="pt-16 md:pt-20 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
+    <main className="pt-4 md:pt-6 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
       {/* PCB Grid Background */}
       <div className="absolute inset-0 pcb-grid-bg opacity-20 pointer-events-none" />
 

@@ -122,7 +122,7 @@ const SkillCard = ({ group }) => {
 
 const SkillsSection = () => {
   return (
-    <main className="pt-16 lg:pt-20 pb-24 md:pb-20 text-white min-h-screen bg-[#0a0f1e] relative overflow-hidden">
+    <main className="pt-4 md:pt-6 pb-24 md:pb-20 text-white min-h-screen bg-[#0a0f1e] relative overflow-hidden">
       {/* PCB Grid Background */}
       <div className="absolute inset-0 pcb-grid-bg opacity-30 pointer-events-none"></div>
 

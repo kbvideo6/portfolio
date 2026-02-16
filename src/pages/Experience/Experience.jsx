@@ -130,7 +130,7 @@ const TimelineItem = ({ item, index, isLast }) => {
 
 const ExperienceSection = () => {
   return (
-    <main className="min-h-screen bg-[#0a0f1e] text-white relative overflow-hidden pt-16 md:pt-20 pb-24 md:pb-20">
+    <main className="min-h-screen bg-[#0a0f1e] text-white relative overflow-hidden pt-4 md:pt-6 pb-24 md:pb-20">
       {/* PCB Grid Background */}
       <div className="absolute inset-0 pcb-grid-bg opacity-20 pointer-events-none" />
 

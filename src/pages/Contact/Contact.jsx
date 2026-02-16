@@ -81,7 +81,7 @@ export default function Contact() {
   };
 
   return (
-    <main className="pt-16 md:pt-20 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
+    <main className="pt-4 md:pt-6 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
       {/* PCB Grid Background */}
       <div className="absolute inset-0 pcb-grid-bg opacity-20 pointer-events-none" />
 
@@ -284,8 +284,8 @@ export default function Contact() {
               {status && (
                 <div
                   className={`mt-4 p-3 rounded-md text-center text-sm font-mono ${status.includes("success")
-                      ? "text-green-400 bg-green-500/10 border border-green-500/20"
-                      : "text-red-400 bg-red-500/10 border border-red-500/20"
+                    ? "text-green-400 bg-green-500/10 border border-green-500/20"
+                    : "text-red-400 bg-red-500/10 border border-red-500/20"
                     }`}
                 >
                   <p>{status}</p>
