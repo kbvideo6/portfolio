@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { Send, MapPin, Mail, ExternalLink } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    projectType: "",
     message: "",
   });
 
@@ -29,11 +30,6 @@ export default function Contact() {
       isValid = false;
     }
 
-    if (!formData.subject.trim()) {
-      tempErrors.subject = "Subject is required";
-      isValid = false;
-    }
-
     if (!formData.message.trim()) {
       tempErrors.message = "Message is required";
       isValid = false;
@@ -51,16 +47,14 @@ export default function Contact() {
       return;
     }
 
-    // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
     form.append("access_key", ""); // Replace with your Web3Forms access key
     form.append("name", formData.name);
     form.append("email", formData.email);
-    form.append("subject", formData.subject || "New Contact Form Submission");
+    form.append("subject", formData.projectType || "New Engineering Inquiry");
     form.append("message", formData.message);
 
     try {
-      // Send form data to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: form,
@@ -69,149 +63,219 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok) {
-        setStatus("Message sent successfully!");
+        setStatus("Message transmitted successfully!");
         setFormData({
           name: "",
           email: "",
-          subject: "",
+          projectType: "",
           message: "",
         });
         setErrors({});
       } else {
-        setStatus(result.message || "There was an error sending your message.");
+        setStatus(result.message || "Transmission failed. Please retry.");
       }
     } catch (error) {
-      setStatus("An error occurred. Please try again.");
+      setStatus("Connection error. Please try again.");
       console.error("Error:", error);
     }
   };
 
   return (
-    <main
-      className="pt-20 lg:pt-[0rem] bg-[#000814]
- text-white min-h-screen"
-    >
-      <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Contact Info */}
+    <main className="pt-16 md:pt-20 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
+      {/* PCB Grid Background */}
+      <div className="absolute inset-0 pcb-grid-bg opacity-20 pointer-events-none" />
+
+      {/* Gradient Accents */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl" />
+
+      <section className="container mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+            <Mail className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-mono text-blue-400">OPEN CHANNEL</span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-mono">
+            <span className="text-blue-400">./</span> Contact Interface
+          </h2>
+
+          <p className="text-slate-400 text-lg font-mono">
+            Available for engineering roles and freelance projects
+          </p>
+        </div>
+
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+            {/* LEFT COLUMN: Contact Info & Socials */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-pink-500 bg-clip-text text-transparent">
-                  Get in Touch
-                </h2>
-                <p className="text-gray-300 text-lg">
-                  Have a question or want to work together? Drop us a message! +94766612933
+                <h3 className="text-2xl font-bold text-white mb-4 font-mono">
+                  Let's Engineer the Future.
+                </h3>
+                <p className="text-slate-400 leading-relaxed">
+                  I am currently available for freelance projects and full-time
+                  engineering roles. Whether you need a custom PCB design, an IoT
+                  backend, or a full-stack dashboard — let's discuss the technical
+                  requirements.
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-blue-500/10 p-3 rounded-lg">
-                    <Mail className="w-6 h-6 text-blue-400" />
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4 text-slate-300 group">
+                  <div className="bg-blue-500/10 p-3 rounded-lg border border-blue-500/20 group-hover:border-blue-500/50 transition-colors">
+                    <Mail className="w-5 h-5 text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">artstudio2023@gmail.com</p>
+                    <h4 className="text-xs font-mono text-slate-500 mb-0.5">EMAIL</h4>
+                    <a
+                      href="mailto:nisal.chathu.eng@gmail.com"
+                      className="hover:text-blue-400 transition-colors font-mono text-sm"
+                    >
+                      nisal.chathu.eng@gmail.com
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="bg-pink-500/10 p-3 rounded-lg">
-                    <MapPin className="w-6 h-6 text-pink-400" />
+                <div className="flex items-center space-x-4 text-slate-300 group">
+                  <div className="bg-green-500/10 p-3 rounded-lg border border-green-500/20 group-hover:border-green-500/50 transition-colors">
+                    <MapPin className="w-5 h-5 text-green-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-400">Negamobo, Colombo, Sri Lanka.</p>
+                    <h4 className="text-xs font-mono text-slate-500 mb-0.5">LOCATION</h4>
+                    <span className="font-mono text-sm">Colombo, Sri Lanka (Open to Remote)</span>
                   </div>
+                </div>
+              </div>
+
+              {/* Professional Networks */}
+              <div className="pt-6 border-t border-slate-800">
+                <h4 className="text-xs font-bold text-slate-500 uppercase mb-4 font-mono">
+                  Professional Networks
+                </h4>
+                <div className="flex gap-4">
+                  <a
+                    href="https://github.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-400 hover:text-white hover:border-blue-500/50 transition-all group"
+                  >
+                    <FaGithub className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-mono">GitHub</span>
+                    <ExternalLink className="w-3 h-3 opacity-50" />
+                  </a>
+                  <a
+                    href="https://linkedin.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-400 hover:text-white hover:border-blue-500/50 transition-all group"
+                  >
+                    <FaLinkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <span className="text-sm font-mono">LinkedIn</span>
+                    <ExternalLink className="w-3 h-3 opacity-50" />
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 gap-6">
+            {/* RIGHT COLUMN: The "Terminal" Form */}
+            <div className="bg-slate-950/50 border border-slate-800 p-6 md:p-8 rounded-lg hover:border-blue-500/30 transition-all duration-300">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
+                    <label className="block text-xs font-mono text-slate-500 mb-2">
+                      NAME
+                    </label>
                     <input
                       type="text"
-                      placeholder="Your Name"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.name ? "border-pink-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
+                      placeholder="Enter name..."
+                      className={`w-full px-4 py-3 rounded-md bg-slate-900 border font-mono text-sm ${errors.name ? "border-red-500" : "border-slate-700"
+                        } focus:border-blue-500 focus:outline-none transition-colors text-slate-200`}
                       value={formData.name}
                       onChange={(e) =>
                         setFormData({ ...formData, name: e.target.value })
                       }
                     />
                     {errors.name && (
-                      <p className="text-pink-500 text-sm mt-1">{errors.name}</p>
+                      <p className="text-red-400 text-xs mt-1 font-mono">
+                        {errors.name}
+                      </p>
                     )}
                   </div>
 
                   <div>
+                    <label className="block text-xs font-mono text-slate-500 mb-2">
+                      EMAIL
+                    </label>
                     <input
                       type="email"
-                      placeholder="Your Email"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.email ? "border-pink-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
+                      placeholder="Enter email..."
+                      className={`w-full px-4 py-3 rounded-md bg-slate-900 border font-mono text-sm ${errors.email ? "border-red-500" : "border-slate-700"
+                        } focus:border-blue-500 focus:outline-none transition-colors text-slate-200`}
                       value={formData.email}
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
                     />
                     {errors.email && (
-                      <p className="text-pink-500 text-sm mt-1">
+                      <p className="text-red-400 text-xs mt-1 font-mono">
                         {errors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Subject"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.subject ? "border-pink-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors`}
-                      value={formData.subject}
-                      onChange={(e) =>
-                        setFormData({ ...formData, subject: e.target.value })
-                      }
-                    />
-                    {errors.subject && (
-                      <p className="text-pink-500 text-sm mt-1">
-                        {errors.subject}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <textarea
-                      placeholder="Your Message"
-                      rows="4"
-                      className={`w-full px-4 py-3 rounded-lg bg-white/5 border ${
-                        errors.message ? "border-pink-500" : "border-gray-700"
-                      } focus:border-blue-500 focus:outline-none transition-colors resize-none`}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                    ></textarea>
-                    {errors.message && (
-                      <p className="text-pink-500 text-sm mt-1">
-                        {errors.message}
                       </p>
                     )}
                   </div>
                 </div>
 
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-2">
+                    PROJECT TYPE
+                  </label>
+                  <select
+                    className="w-full px-4 py-3 rounded-md bg-slate-900 border border-slate-700 font-mono text-sm focus:border-blue-500 focus:outline-none transition-colors text-slate-200"
+                    value={formData.projectType}
+                    onChange={(e) =>
+                      setFormData({ ...formData, projectType: e.target.value })
+                    }
+                  >
+                    <option value="">Select a category...</option>
+                    <option value="Embedded Systems / PCB Design">
+                      Embedded Systems / PCB Design
+                    </option>
+                    <option value="Full-Stack Development (MERN)">
+                      Full-Stack Development (MERN)
+                    </option>
+                    <option value="IoT Architecture">IoT Architecture</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-mono text-slate-500 mb-2">
+                    MESSAGE
+                  </label>
+                  <textarea
+                    rows="4"
+                    placeholder="// Describe your project requirements..."
+                    className={`w-full px-4 py-3 rounded-md bg-slate-900 border font-mono text-sm ${errors.message ? "border-red-500" : "border-slate-700"
+                      } focus:border-blue-500 focus:outline-none transition-colors resize-none text-slate-200`}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                  ></textarea>
+                  {errors.message && (
+                    <p className="text-red-400 text-xs mt-1 font-mono">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center space-x-2 hover:opacity-90 transition-opacity"
+                  className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-6 rounded-md font-mono flex items-center justify-center space-x-2 transition-all shadow-lg shadow-blue-900/20"
                 >
-                  <span>Send Message</span>
+                  <span>Transmit Message</span>
                   <Send className="w-4 h-4" />
                 </button>
               </form>
@@ -219,11 +283,10 @@ export default function Contact() {
               {/* Status Message */}
               {status && (
                 <div
-                  className={`mt-4 text-center ${
-                    status.includes("success")
-                      ? "text-green-400"
-                      : "text-pink-400"
-                  }`}
+                  className={`mt-4 p-3 rounded-md text-center text-sm font-mono ${status.includes("success")
+                      ? "text-green-400 bg-green-500/10 border border-green-500/20"
+                      : "text-red-400 bg-red-500/10 border border-red-500/20"
+                    }`}
                 >
                   <p>{status}</p>
                 </div>
@@ -231,7 +294,23 @@ export default function Contact() {
             </div>
           </div>
         </div>
+
+        {/* Footer */}
+        <div className="mt-16 pt-8 border-t border-slate-800 text-center">
+          <p className="text-xs text-slate-600 font-mono">
+            &copy; {new Date().getFullYear()} Nisal Chathu. Engineered with React & precision.
+          </p>
+        </div>
       </section>
+
+      <style jsx>{`
+        .pcb-grid-bg {
+          background-image:
+            linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+          background-size: 50px 50px;
+        }
+      `}</style>
     </main>
   );
 }

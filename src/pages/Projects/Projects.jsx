@@ -1,306 +1,211 @@
-import { ReactLenis } from "lenis/react";
-import { useTransform, motion, useScroll } from "framer-motion";
-import { useRef, useEffect } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import { FaGithub } from "react-icons/fa";
+import { ExternalLink, Cpu, Server, Activity } from "lucide-react";
 
 const projects = [
   {
+    id: "01",
     title: "LifeSeeker Rescue Rover",
+    category: "Robotics // Hardware",
     description:
-      "Advanced disaster recovery robotics platform featuring mmWave radar sensor integration and custom PCB design. Built for real-time victim detection in collapsed structures with autonomous navigation and live telemetry streaming.",
-    src: "https://images.unsplash.com/photo-1606624643716-e9833fc7e3f4?w=800&q=80", // Placeholder - replace with actual project image
-    link: "https://images.unsplash.com/photo-1606624643716-e9833fc7e3f4?w=800&q=80",
-    color: "#3b82f6", // Electric Blue for robotics/hardware
-    githubLink: "#",
-    liveLink: "#",
-    tags: ["Robotics", "mmWave", "Altium", "ESP32", "PCB Design"]
+      "Designed a custom multi-layer PCB for a disaster recovery rover. Integrated mmWave radar sensors to detect human vitals under debris, processing signals locally on an ESP32 before transmitting to a central command unit via LoRa.",
+    stack: ["Altium Designer", "ESP32", "C++", "mmWave", "LoRa"],
+    icon: Cpu,
+    links: { code: "#", schematic: "#" },
+    status: "Prototype",
+    statusColor: "#3b82f6",
+    color: "#3b82f6",
   },
   {
-    title: "Commercial Vape Detection System",
+    id: "02",
+    title: "Commercial IoT Backend",
+    category: "Full-Stack // Cloud",
     description:
-      "Full-stack IoT platform for commercial deployment. Engineered device authentication protocols, real-time data ingestion APIs, and comprehensive dashboard analytics. MERN stack with MongoDB aggregation pipelines for scalable sensor network management.",
-    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", // Placeholder
-    link: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
-    color: "#10b981", // Signal Green for IoT/Cloud
-    githubLink: "#",
-    liveLink: "#",
-    tags: ["IoT", "MERN Stack", "Freelance", "Device Auth", "Analytics"]
+      "Architected the backend for a commercial IoT vape detector. Built a high-throughput data ingestion API to handle real-time events from hundreds of devices, implementing JWT authentication and WebSocket-based live alerts.",
+    stack: ["Node.js", "MongoDB", "React", "MQTT", "JWT"],
+    icon: Server,
+    links: { code: "#", demo: "#" },
+    status: "Production",
+    statusColor: "#10b981",
+    color: "#10b981",
   },
   {
+    id: "03",
     title: "AIoT Muscle Monitor",
+    category: "Wearable // Research",
     description:
-      "Wearable health monitoring system with sEMG and IMU sensors for real-time muscle activity analysis. Python-based signal processing pipeline with machine learning for gesture recognition. Developed for national competition proposal showcasing AIoT innovation.",
-    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80", // Placeholder
-    link: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-    color: "#06b6d4", // Cyan for wearables/AI
-    githubLink: "#",
-    liveLink: "#",
-    tags: ["Wearable", "Python", "Signal Processing", "sEMG", "Machine Learning"]
-  }
+      "Developed a sensor fusion algorithm to correlate muscle activity (sEMG) with motion data (IMU). Created a Python-based processing pipeline to identify muscle fatigue thresholds in real-time for wearable health monitoring.",
+    stack: ["Python", "NumPy/SciPy", "sEMG", "IMU", "ML"],
+    icon: Activity,
+    links: { code: "#", paper: "#" },
+    status: "Research",
+    statusColor: "#06b6d4",
+    color: "#06b6d4",
+  },
 ];
 
 export default function Projects() {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
-
-  useEffect(() => {
-    // Add specific styles for 1366x768 resolution
-    const style = document.createElement("style");
-    style.textContent = `
-      @media screen and (width: 1366px) and (height: 768px),
-             screen and (width: 1367px) and (height: 768px),
-             screen and (width: 1368px) and (height: 769px) {
-        .project-card {
-          scale: 0.85;
-          margin-top: -5vh;
-        }
-        .project-container {
-          height: 90vh;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Resolution check function
-    const checkResolution = () => {
-      const isTargetResolution =
-        window.innerWidth >= 1360 &&
-        window.innerWidth <= 1370 &&
-        window.innerHeight >= 760 &&
-        window.innerHeight <= 775;
-
-      if (isTargetResolution) {
-        document.documentElement.style.setProperty("--project-scale", "0.85");
-        document.documentElement.style.setProperty("--project-margin", "-5vh");
-      } else {
-        document.documentElement.style.setProperty("--project-scale", "1");
-        document.documentElement.style.setProperty("--project-margin", "0");
-      }
-    };
-
-    checkResolution();
-    window.addEventListener("resize", checkResolution);
-
-    return () => {
-      document.head.removeChild(style);
-      window.removeEventListener("resize", checkResolution);
-    };
-  }, []);
-
   return (
-    <ReactLenis root>
-      <main className="bg-black pb-24 md:pb-8" ref={container}>
-        <section className="text-white w-full bg-slate-950">
-          {projects.map((project, i) => {
-            const targetScale = 1 - (projects.length - i) * 0.05;
-            return (
-              <Card
-                key={`p_${i}`}
-                i={i}
-                url={project.link}
-                title={project.title}
-                color={project.color}
-                description={project.description}
-                progress={scrollYProgress}
-                range={[i * 0.25, 1]}
-                targetScale={targetScale}
-                githubLink={project.githubLink}
-                liveLink={project.liveLink}
-                tags={project.tags}
-              />
-            );
-          })}
-        </section>
-      </main>
-    </ReactLenis>
-  );
-}
+    <main className="pt-16 md:pt-20 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
+      {/* PCB Grid Background */}
+      <div className="absolute inset-0 pcb-grid-bg opacity-20 pointer-events-none" />
 
-function Card({
-  i,
-  title,
-  description,
-  url,
-  color,
-  progress,
-  range,
-  targetScale,
-  githubLink,
-  liveLink,
-  tags = [],
-}) {
-  const container = useRef(null);
-  const scale = useTransform(progress, range, [1, targetScale]);
+      {/* Gradient Accents */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl" />
 
-  return (
-    <div
-      ref={container}
-      className="h-screen flex items-center justify-center sticky top-0 project-container"
-    >
-      <motion.div
-        style={{
-          scale,
-          top: `calc(-5vh + ${i * 25}px)`,
-          transform: `scale(var(--project-scale, 1))`,
-          marginTop: "var(--project-margin, 0)",
-        }}
-        className="relative -top-[25%] h-auto w-[90%] md:w-[85%] lg:w-[75%] xl:w-[65%] origin-top project-card"
-        whileHover={{
-          y: -8,
-          transition: { duration: 0.3 },
-        }}
-      >
-        {/* Modern split card design */}
-        <div className="w-full flex flex-col md:flex-row bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
-          {/* Image section - full width on mobile, 55% on desktop */}
-          <div className="w-full md:w-[55%] h-[250px] md:h-[400px] lg:h-[450px] relative overflow-hidden">
-            <motion.img
-              src={url}
-              alt={title}
-              className="w-full h-full object-cover"
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
-            />
-
-            {/* Colored overlay on hover */}
-            <motion.div
-              className="absolute inset-0"
-              style={{ backgroundColor: color, mixBlendMode: "overlay" }}
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 0.3 }}
-              transition={{ duration: 0.3 }}
-            />
-
-            {/* Project number */}
-            <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-black/50 backdrop-blur-md text-white px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium">
-              Project {i + 1}
+      <section className="container mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10">
+        {/* Section Header */}
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+              <Cpu className="w-4 h-4 text-blue-400" />
+              <span className="text-sm font-mono text-blue-400">CASE STUDIES</span>
             </div>
+
+            <h2 className="text-3xl md:text-4xl font-bold font-mono mb-4">
+              <span className="text-blue-400">./</span> Selected Projects
+            </h2>
+            <p className="text-slate-400 text-lg max-w-2xl">
+              Engineering solutions from concept to deployment — PCB layouts, IoT architectures, and signal processing pipelines.
+            </p>
           </div>
 
-          {/* Content section - full width on mobile, 45% on desktop */}
-          <div className="w-full md:w-[45%] p-6 md:p-8 lg:p-10 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
+          {/* Project Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => {
+              const IconComponent = project.icon;
+              return (
                 <div
-                  className="w-2 h-2 md:w-3 md:h-3 rounded-full"
-                  style={{ backgroundColor: color }}
-                />
-                <div className="h-[1px] w-12 md:w-20 bg-gray-600" />
-              </div>
+                  key={project.id}
+                  className="group bg-slate-950/50 border border-slate-800 rounded-lg overflow-hidden hover:border-blue-500/40 transition-all duration-300 flex flex-col"
+                >
+                  {/* Visual Header - Blueprint style */}
+                  <div className="h-48 bg-slate-900/80 border-b border-slate-800 relative group-hover:bg-slate-800/80 transition-colors overflow-hidden">
+                    {/* Grid pattern overlay */}
+                    <div
+                      className="absolute inset-0 opacity-10"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)",
+                        backgroundSize: "20px 20px",
+                      }}
+                    />
 
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4 font-mono">
-                {title}
-              </h2>
-
-              {/* Tags */}
-              {tags && tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
-                  {tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm rounded-md bg-gray-800/50 border border-gray-700 text-gray-300 font-mono"
-                      style={{ borderColor: `${color}40` }}
+                    {/* Status Badge */}
+                    <div
+                      className="absolute top-4 right-4 backdrop-blur px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded border"
+                      style={{
+                        color: project.statusColor,
+                        borderColor: `${project.statusColor}40`,
+                        backgroundColor: `${project.statusColor}10`,
+                      }}
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      {project.status}
+                    </div>
+
+                    {/* Project ID */}
+                    <div className="absolute top-4 left-4 text-xs font-mono text-slate-600">
+                      PRJ-{project.id}
+                    </div>
+
+                    {/* Center Icon */}
+                    <div className="flex items-center justify-center h-full">
+                      <div className="relative">
+                        <IconComponent
+                          className="w-12 h-12 transition-all duration-300 group-hover:scale-110"
+                          style={{ color: `${project.color}60` }}
+                        />
+                        {/* Pulse ring */}
+                        <div
+                          className="absolute inset-0 rounded-full animate-ping opacity-20"
+                          style={{ backgroundColor: project.color }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Corner accent lines */}
+                    <div
+                      className="absolute bottom-0 left-0 w-8 h-[2px] opacity-30"
+                      style={{ backgroundColor: project.color }}
+                    />
+                    <div
+                      className="absolute bottom-0 left-0 w-[2px] h-8 opacity-30"
+                      style={{ backgroundColor: project.color }}
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5 md:p-6 flex-1 flex flex-col">
+                    <div className="text-xs font-mono mb-2" style={{ color: project.color }}>
+                      {project.category}
+                    </div>
+
+                    <h3 className="text-lg md:text-xl font-bold text-slate-100 mb-3 font-mono">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">
+                      {project.description}
+                    </p>
+
+                    {/* Tech Stack Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 bg-slate-900 text-slate-300 text-[10px] uppercase font-bold tracking-wider rounded border border-slate-700 font-mono"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3 mt-auto">
+                      <a
+                        href={project.links.code}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-300 rounded-md hover:bg-slate-800 hover:text-white transition-colors"
+                      >
+                        <FaGithub className="w-4 h-4" />
+                        View Code
+                      </a>
+                      <a
+                        href={Object.values(project.links)[1] || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono text-white rounded-md transition-colors shadow-lg"
+                        style={{
+                          backgroundColor: project.color,
+                          boxShadow: `0 4px 14px ${project.color}30`,
+                        }}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        {project.links.schematic
+                          ? "Schematic"
+                          : project.links.demo
+                            ? "Live Demo"
+                            : "Paper"}
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              )}
-
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed line-clamp-3 md:line-clamp-none max-w-md">
-                {description}
-              </p>
-            </div>
-
-            <div className="mt-4 md:mt-auto pt-4">
-              <div className="w-full h-[1px] bg-gray-800 mb-4 md:mb-6" />
-
-              <div className="flex items-center gap-4">
-                {/* GitHub Link */}
-                <motion.a
-                  href={githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2"
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span
-                    className="text-xs md:text-sm font-medium"
-                    style={{ color }}
-                  >
-                    Code
-                  </span>
-                </motion.a>
-
-                {/* Live Link */}
-                <motion.a
-                  href={liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2"
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
-                  <span
-                    className="text-xs md:text-sm font-medium"
-                    style={{ color }}
-                  >
-                    Live
-                  </span>
-                </motion.a>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
-      </motion.div>
-    </div>
+      </section>
+
+      <style jsx>{`
+        .pcb-grid-bg {
+          background-image:
+            linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+          background-size: 50px 50px;
+        }
+      `}</style>
+    </main>
   );
 }
-
-// Add PropTypes validation
-Card.propTypes = {
-  i: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  progress: PropTypes.object.isRequired,
-  range: PropTypes.array.isRequired,
-  targetScale: PropTypes.number.isRequired,
-  githubLink: PropTypes.string.isRequired,
-  liveLink: PropTypes.string.isRequired,
-  tags: PropTypes.array,
-};
