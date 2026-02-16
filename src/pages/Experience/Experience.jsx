@@ -122,7 +122,7 @@ const TimelineItem = ({ item, index, isLast }) => {
         </div>
 
         {/* Circuit trace animation on hover */}
-        <div className="absolute left-0 top-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/0 to-transparent group-hover:via-blue-500/30 transition-all duration-500 pointer-events-none" />
+        <div className="absolute left-0 top-1/2 w-full h-px bg-blue-500/0 group-hover:bg-blue-500/20 transition-all duration-500 pointer-events-none" />
       </div>
     </div>
   );
@@ -168,7 +168,7 @@ const ExperienceSection = () => {
             ))}
 
             {/* Timeline End Marker */}
-            <div className="absolute -left-[33px] bottom-0 h-12 w-0.5 bg-gradient-to-b from-slate-800 to-transparent" />
+            <div className="absolute -left-[33px] bottom-0 h-12 w-0.5 bg-slate-800" />
           </div>
 
           {/* Timeline Legend */}

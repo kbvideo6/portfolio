@@ -38,7 +38,7 @@ export default function Header() {
   return (
     <header className="fixed bottom-0 left-0 w-full z-50 bg-transparent">
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-auto">
-        <div className="p-[2px] rounded-full bg-gradient-to-r from-blue-500 via-green-500 to-cyan-500 animate-gradient-x">
+        <div className="p-[1px] rounded-full bg-slate-700">
           <nav className="bg-[#0f0f0f] backdrop-blur-md rounded-full px-2 md:px-6 py-2.5">
             {/* Icon Navigation - Icons only on mobile, icons + text on desktop */}
             <div className="flex items-center justify-center gap-1 md:gap-2">
@@ -51,8 +51,8 @@ export default function Header() {
                     transition-all duration-300 flex items-center gap-2
                     hover:bg-white/10 
                     ${activeLink === id
-                      ? "bg-white/15 text-white"
-                      : "text-gray-300 hover:text-white"
+                      ? "bg-blue-500/15 text-blue-400"
+                      : "text-gray-400 hover:text-white"
                     }
                   `}
                 >
@@ -67,21 +67,6 @@ export default function Header() {
           </nav>
         </div>
       </div>
-
-      <style>{`
-        @keyframes gradient-x {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-        .animate-gradient-x {
-          animation: gradient-x 3s linear infinite;
-          background-size: 200% 200%;
-        }
-      `}</style>
     </header>
   );
 }

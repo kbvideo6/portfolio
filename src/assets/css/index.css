@@ -13,12 +13,17 @@
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     --font-sans: 'Inter', system-ui, sans-serif;
   }
-  
+
   body {
     font-family: var(--font-sans);
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-mono);
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -27,10 +32,13 @@
 
 /* PCB Trace Grid Animation */
 @keyframes pcb-trace-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.3;
     transform: translateX(0);
   }
+
   50% {
     opacity: 0.6;
     transform: translateX(2px);
@@ -38,9 +46,12 @@
 }
 
 @keyframes circuit-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
   }
+
   50% {
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
   }
@@ -51,9 +62,11 @@
     transform: translateX(-100%);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: translateX(100%);
     opacity: 0;
@@ -64,6 +77,7 @@
   0% {
     background-position: 0% 0%;
   }
+
   100% {
     background-position: 100% 100%;
   }
@@ -73,8 +87,10 @@
 @layer base {
   .dark {
     /* Deep Slate & Void Black Base */
-    --background: 222 47% 11%; /* Deep Slate #0f172a */
-    --foreground: 210 40% 91%; /* Off-white #e2e8f0 */
+    --background: 222 47% 11%;
+    /* Deep Slate #0f172a */
+    --foreground: 210 40% 91%;
+    /* Off-white #e2e8f0 */
 
     --card: 222 47% 9%;
     --card-foreground: 210 40% 91%;
@@ -83,55 +99,52 @@
     --popover-foreground: 210 40% 91%;
 
     /* Electric Blue Primary */
-    --primary: 217 91% 60%; /* Electric Blue #3b82f6 */
+    --primary: 217 91% 60%;
+    /* Electric Blue #3b82f6 */
     --primary-foreground: 0 0% 100%;
 
     /* Signal Green Secondary */
-    --secondary: 160 84% 39%; /* Signal Green #10b981 */
+    --secondary: 160 84% 39%;
+    /* Signal Green #10b981 */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
 
     /* Cyan Accent for highlights */
-    --accent: 189 94% 43%; /* Cyan #06b6d4 */
+    --accent: 189 94% 43%;
+    /* Cyan #06b6d4 */
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 72% 51%; /* Red for errors */
+    --destructive: 0 72% 51%;
+    /* Red for errors */
     --destructive-foreground: 0 0% 100%;
 
     /* Sharp borders, no soft glows */
     --border: 217 50% 20%;
     --input: 217 33% 15%;
-    --ring: 217 91% 60%; /* Electric Blue ring */
+    --ring: 217 91% 60%;
+    /* Electric Blue ring */
 
     /* Chart colors - Technical palette */
-    --chart-1: 217 91% 60%; /* Electric Blue */
-    --chart-2: 160 84% 39%; /* Signal Green */
-    --chart-3: 189 94% 43%; /* Cyan */
-    --chart-4: 45 93% 58%; /* Amber warning */
-    --chart-5: 0 72% 51%; /* Red alert */
+    --chart-1: 217 91% 60%;
+    /* Electric Blue */
+    --chart-2: 160 84% 39%;
+    /* Signal Green */
+    --chart-3: 189 94% 43%;
+    /* Cyan */
+    --chart-4: 45 93% 58%;
+    /* Amber warning */
+    --chart-5: 0 72% 51%;
+    /* Red alert */
   }
 }
 
-/* Electric Blue gradient for technical accents */
+/* Clean flat text accent */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #10b981 100%);
-  background-size: 200% auto;
-  animation: gradient-shift 3s linear infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #e2e8f0;
 }
 
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 200% 50%;
-  }
-}
 
 /* Sharp technical borders (no soft gradients) */
 .gradient-border {
@@ -165,9 +178,8 @@
   height: 2px;
   bottom: -4px;
   left: 0;
-  background: linear-gradient(90deg, #3b82f6, #10b981);
+  background: #3b82f6;
   transition: width 0.3s ease;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
 }
 
 .nav-link:hover::after {
@@ -195,7 +207,7 @@
 }
 
 .window-header {
-  background: linear-gradient(135deg, #0a0f1e, #1e293b);
+  background: #0f172a;
   padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
@@ -211,15 +223,18 @@
 }
 
 .window-dot:nth-child(1) {
-  background: #ef4444; /* Red */
+  background: #ef4444;
+  /* Red */
 }
 
 .window-dot:nth-child(2) {
-  background: #f59e0b; /* Amber */
+  background: #f59e0b;
+  /* Amber */
 }
 
 .window-dot:nth-child(3) {
-  background: #10b981; /* Green */
+  background: #10b981;
+  /* Green */
 }
 
 .window-dot:hover {
@@ -237,18 +252,24 @@
 }
 
 @keyframes float-slow {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-10px) rotate(1deg);
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -264,9 +285,12 @@
 }
 
 @keyframes blink {
-  from, to {
+
+  from,
+  to {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -290,20 +314,24 @@ pre[class*="language-"] {
 }
 
 .token.string {
-  color: #10b981 !important; /* Signal Green */
+  color: #10b981 !important;
+  /* Signal Green */
 }
 
 .token.keyword {
-  color: #3b82f6 !important; /* Electric Blue */
+  color: #3b82f6 !important;
+  /* Electric Blue */
   font-weight: 600;
 }
 
 .token.function {
-  color: #06b6d4 !important; /* Cyan */
+  color: #06b6d4 !important;
+  /* Cyan */
 }
 
 .token.number {
-  color: #f59e0b !important; /* Amber */
+  color: #f59e0b !important;
+  /* Amber */
 }
 
 .token.operator {
@@ -311,12 +339,13 @@ pre[class*="language-"] {
 }
 
 .token.property {
-  color: #8b5cf6 !important; /* Purple for properties */
+  color: #8b5cf6 !important;
+  /* Purple for properties */
 }
 
 /* PCB Grid Background Effects */
 .pcb-grid-bg {
-  background-image: 
+  background-image:
     linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -335,24 +364,19 @@ pre[class*="language-"] {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  background: #3b82f6;
+  opacity: 0.4;
   animation: signal-flow 3s ease-in-out infinite;
 }
 
 /* Technical Grid overlays */
 .top-left-grid {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.1) 0%, 
-    rgba(16, 185, 129, 0.05) 100%
-  );
+  background: rgba(59, 130, 246, 0.05);
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 .bottom-right-grid {
-  background: linear-gradient(135deg, 
-    rgba(16, 185, 129, 0.05) 0%, 
-    rgba(59, 130, 246, 0.1) 100%
-  );
+  background: rgba(16, 185, 129, 0.05);
   border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
@@ -361,12 +385,12 @@ pre[class*="language-"] {
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
   }
-  
+
   code {
     font-family: var(--font-mono);
   }
@@ -374,8 +398,8 @@ pre[class*="language-"] {
 
 /* Glow effects for interactive elements */
 .btn-primary {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  background: #3b82f6;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
   transition: all 0.3s ease;
 }
 

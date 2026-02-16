@@ -144,7 +144,7 @@ const engineer = {
               <div className="relative mb-6 sm:mb-8">
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                   <span className="relative inline-block">
-                    <span className="typing-effect gradient-text">
+                    <span className="typing-effect text-white">
                       Nisal Chathu
                     </span>
                   </span>
@@ -161,7 +161,7 @@ const engineer = {
                 <div className="absolute -z-10 top-1/2 -translate-y-1/2 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
               </div>
               {/* Role badge */}
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 mb-4 sm:mb-6 backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s">
+              <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-slate-700 mb-4 sm:mb-6 backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s">
                 <i className="fas fa-microchip text-blue-400 animate-pulse text-sm sm:text-base"></i>
                 <span>
                   <FlipWords
@@ -175,9 +175,9 @@ const engineer = {
                 {/* View Projects Button */}
                 <a
                   href="/projects"
-                  className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r p-0.5 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
+                  className="group relative inline-flex items-center justify-center gap-3 rounded-full transition-all duration-300 hover:scale-105"
                 >
-                  <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gray-900 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-teal-400">
+                  <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-blue-600 hover:bg-blue-500 transition-all duration-300">
                     <span className="relative flex items-center justify-center gap-2 text-white font-medium">
                       <span>View Projects</span>
                       <i className="fas fa-arrow-right transform transition-all duration-300 group-hover:translate-x-1"></i>
@@ -189,7 +189,7 @@ const engineer = {
 
             {/* Right column - Code window */}
             <div className="w-full lg:w-1/2 animate__animated animate__fadeInDown animate__delay-0.1s">
-              <div className="gradient-border">
+              <div className="border border-slate-700 rounded-lg">
                 <div className="code-window bg-[#091121]">
                   <div className="window-header">
                     <div className="window-dot bg-red-500"></div>
