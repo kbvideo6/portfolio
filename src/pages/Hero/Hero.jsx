@@ -16,35 +16,25 @@ const GridBackground = () => {
 
 export default function Hero() {
   const words = [
-    "Creative Technologist & Full-Stack Developer",
-    "3D Artist turned Web Developer",
-    "Web developer turned Electrnoic Engineer",
-    "Problem-Solver",
+    "Embedded Systems Engineer",
+    "PCB Designer & IoT Developer",
+    "Hardware meets Software",
+    "Building the Future of IoT",
   ];
 
   const [code] = useState(`
-const profile = {
-  name: 'Nisal Chathu', 
-  title: 'Creative Technologist | Full-Stack Developer | Open Source Advocate',
-  contact: {
-    email: 'your.email@example.com',
-    linkedin: 'linkedin.com/in/yourprofile',
-    github: 'github.com/yourusername'
+const engineer = {
+  name: "Nisal Chathu",
+  role: "Embedded Systems Engineer",
+  education: "B.Sc. Physics & Electronics, USJ",
+  status: "Building the future of IoT",
+  stack: {
+    hardware: ["Altium Designer", "Proteus", "ESP32/Arduino"],
+    firmware: ["C/C++", "Python", "MicroPython"],
+    web: ["MongoDB", "Express", "React", "Node.js"]
   },
-  summary: "A multi-talented developer with a creative foundation in 3D animation and a professional drive for building robust web solutions. Passionate about solving complex problems at the intersection of media and technology, and a firm believer in the power of open-source collaboration.",
-
-  skills: [
-    'JavaScript', 'HTML5', 'CSS3', 'React', 'Node.js',
-    '3D Animation', 'Video Editing', 'Adobe Creative Suite',
-    'IT Support', 'Network Management', 'Git', 'GitHub', 'Linux'
-  ],
-  isCreative: true,
-  isTechnologist: true,
-  problemSolver: true,
-  yearsOfExperience: new Date().getFullYear() - 2019, 
+  currentFocus: "LifeSeeker Rover & AIoT Wearables"
 };
-
-
   `);
 
   useEffect(() => {
@@ -110,9 +100,9 @@ const profile = {
 
   return (
     <>
-      <main className="bg-[#090909] text-white min-h-screen">
+      <main className="bg-[#090909] text-white min-h-screen pb-20 md:pb-8">
         <section
-          className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 py-1 md:py-1 lg:py-0 hero-section-padding"
+          className="hero min-h-screen flex items-center justify-center relative px-4 sm:px-6 lg:px-8 pt-4 md:pt-8 lg:pt-0 hero-section-padding"
           style={{ paddingTop: "var(--hero-padding-top, 0)" }}
         >
           <div className="absolute inset-0"></div>
@@ -125,7 +115,7 @@ const profile = {
 
           {/* Main content container */}
           <div
-            className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-1 md:py-1 lg:py-2 md:pt-2 xl:pt-2"
+            className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-4 md:py-8 lg:py-12 gap-6 md:gap-10"
             style={{
               paddingTop:
                 window.innerWidth >= 1360 &&
@@ -144,31 +134,35 @@ const profile = {
 
               {/* Welcome badge */}
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-ful">
-                <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse status-online"></div>
                 <span className="text-gray-300 text-xs sm:text-sm font-medium">
-                  Welcome
+                  Available for Projects
                 </span>
               </div>
 
               {/* Name section */}
               <div className="relative mb-6 sm:mb-8">
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
-                  <SparklesText text="Hey," />
                   <span className="relative inline-block">
-
                     <span className="typing-effect gradient-text">
-                      {" "}
-                      Art Studio
+                      Nisal Chathu
                     </span>
-                    <span>Here</span>
                   </span>
                 </h1>
+                {/* Technical Headline */}
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-300 mt-3 leading-relaxed">
+                  Bridging the Gap Between <span className="text-blue-400">Hardware</span> and the <span className="text-green-400">Cloud</span>.
+                </h2>
+                {/* Subtitle */}
+                <p className="text-base sm:text-lg text-gray-400 mt-2 font-mono">
+                  Electronic & Embedded Systems Undergraduate | PCB Designer | MERN Stack Developer
+                </p>
+
                 <div className="absolute -z-10 top-1/2 -translate-y-1/2 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
               </div>
-
               {/* Role badge */}
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/10 to-teal-500/10 border border-blue-500/20 mb-6 sm:mb-8 backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s">
-                <i className="fas fa-rocket text-blue-400 animate-bounce text-sm sm:text-base"></i>
+              <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-gradient-to-r from-blue-500/10 to-green-500/10 border border-blue-500/20 mb-4 sm:mb-6 backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s">
+                <i className="fas fa-microchip text-blue-400 animate-pulse text-sm sm:text-base"></i>
                 <span>
                   <FlipWords
                     className={"text-lg sm:text-xl text-blue-400 font-medium"}
@@ -176,9 +170,6 @@ const profile = {
                   />
                 </span>
               </div>
-
-              
-
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate__animated animate__fadeInUp animate__delay-2s">
                 {/* View Projects Button */}
@@ -194,17 +185,17 @@ const profile = {
                   </span>
                 </a>
 
-                
+
               </div>
 
               {/* Floating badges */}
-              
+
               <div className="hidden lg:block absolute right-10 top-0 animate-float">
                 <div className="px-4 py-2 rounded-full bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 text-blue-400">
                   <i className="fas fa-code"></i>&nbsp;&nbsp;Real Code
                 </div>
               </div>
-              
+
             </div>
 
             {/* Right column - Code window */}
@@ -217,7 +208,7 @@ const profile = {
                     <div className="window-dot bg-green-500"></div>
                     <span className="ml-2 text-sm text-gray-400 flex items-center gap-2">
                       <i className="fas fa-code"></i>
-                      developer.js
+                      engineer.js
                     </span>
                   </div>
                   <pre className="language-javascript">

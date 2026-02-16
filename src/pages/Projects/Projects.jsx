@@ -5,14 +5,37 @@ import PropTypes from "prop-types";
 
 const projects = [
   {
-    title: "",
+    title: "LifeSeeker Rescue Rover",
     description:
-      "",
-    src: "",
-    link: "",
-    color: "#5196fd",
-    githubLink: "",
-    liveLink: "",
+      "Advanced disaster recovery robotics platform featuring mmWave radar sensor integration and custom PCB design. Built for real-time victim detection in collapsed structures with autonomous navigation and live telemetry streaming.",
+    src: "https://images.unsplash.com/photo-1606624643716-e9833fc7e3f4?w=800&q=80", // Placeholder - replace with actual project image
+    link: "https://images.unsplash.com/photo-1606624643716-e9833fc7e3f4?w=800&q=80",
+    color: "#3b82f6", // Electric Blue for robotics/hardware
+    githubLink: "#",
+    liveLink: "#",
+    tags: ["Robotics", "mmWave", "Altium", "ESP32", "PCB Design"]
+  },
+  {
+    title: "Commercial Vape Detection System",
+    description:
+      "Full-stack IoT platform for commercial deployment. Engineered device authentication protocols, real-time data ingestion APIs, and comprehensive dashboard analytics. MERN stack with MongoDB aggregation pipelines for scalable sensor network management.",
+    src: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", // Placeholder
+    link: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+    color: "#10b981", // Signal Green for IoT/Cloud
+    githubLink: "#",
+    liveLink: "#",
+    tags: ["IoT", "MERN Stack", "Freelance", "Device Auth", "Analytics"]
+  },
+  {
+    title: "AIoT Muscle Monitor",
+    description:
+      "Wearable health monitoring system with sEMG and IMU sensors for real-time muscle activity analysis. Python-based signal processing pipeline with machine learning for gesture recognition. Developed for national competition proposal showcasing AIoT innovation.",
+    src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80", // Placeholder
+    link: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    color: "#06b6d4", // Cyan for wearables/AI
+    githubLink: "#",
+    liveLink: "#",
+    tags: ["Wearable", "Python", "Signal Processing", "sEMG", "Machine Learning"]
   }
 ];
 
@@ -69,7 +92,7 @@ export default function Projects() {
 
   return (
     <ReactLenis root>
-      <main className="bg-black" ref={container}>
+      <main className="bg-black pb-24 md:pb-8" ref={container}>
         <section className="text-white w-full bg-slate-950">
           {projects.map((project, i) => {
             const targetScale = 1 - (projects.length - i) * 0.05;
@@ -86,6 +109,7 @@ export default function Projects() {
                 targetScale={targetScale}
                 githubLink={project.githubLink}
                 liveLink={project.liveLink}
+                tags={project.tags}
               />
             );
           })}
@@ -106,6 +130,7 @@ function Card({
   targetScale,
   githubLink,
   liveLink,
+  tags = [],
 }) {
   const container = useRef(null);
   const scale = useTransform(progress, range, [1, targetScale]);
@@ -167,9 +192,25 @@ function Card({
                 <div className="h-[1px] w-12 md:w-20 bg-gray-600" />
               </div>
 
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4 font-mono">
                 {title}
               </h2>
+
+              {/* Tags */}
+              {tags && tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-3 md:mb-4">
+                  {tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm rounded-md bg-gray-800/50 border border-gray-700 text-gray-300 font-mono"
+                      style={{ borderColor: `${color}40` }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
               <p className="text-sm md:text-base text-gray-400 leading-relaxed line-clamp-3 md:line-clamp-none max-w-md">
                 {description}
               </p>
@@ -261,4 +302,5 @@ Card.propTypes = {
   targetScale: PropTypes.number.isRequired,
   githubLink: PropTypes.string.isRequired,
   liveLink: PropTypes.string.isRequired,
+  tags: PropTypes.array,
 };

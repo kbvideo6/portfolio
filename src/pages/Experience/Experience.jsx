@@ -1,138 +1,215 @@
 import React from "react";
-import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
+import { BiChip, BiGitBranch } from "react-icons/bi";
+import { BsCpu } from "react-icons/bs";
+import { SiAltiumdesigner, SiReact, SiNodedotjs, SiMongodb, SiPython, SiArduino } from "react-icons/si";
 
-const ExperienceCard = ({
-  title,
-  company,
-  period,
-  description,
-  icon: Icon,
-}) => (
-  <div className="group relative overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-    {/* Glass morphism effect */}
-    <div className="absolute inset-0 backdrop-blur-lg bg-white/5 rounded-lg" />
+const experience = [
+  {
+    role: "Freelance IoT & Embedded Engineer",
+    company: "Self-Employed",
+    location: "Remote / Freelance",
+    period: "2024 - PRESENT",
+    status: "active",
+    description:
+      "Architecting full-stack IoT solutions for commercial clients. Currently developing a scalable MERN-stack backend for a vape detection system, handling real-time data ingestion and device authentication. Designing custom PCBs for industrial applications using Altium Designer.",
+    tech: [
+      { name: "React", icon: SiReact },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Altium", icon: SiAltiumdesigner },
+      { name: "MQTT", icon: BiChip },
+      { name: "MongoDB", icon: SiMongodb }
+    ],
+    color: "#3b82f6" // Electric Blue
+  },
+  {
+    role: "Undergraduate Researcher & Team Lead",
+    company: "University of Sri Jayewardenepura",
+    location: "Physics Department - USJ",
+    period: "2023 - PRESENT",
+    status: "active",
+    description:
+      "Leading the engineering of 'LifeSeeker,' a disaster recovery rover utilizing mmWave radar and custom sensor arrays. Specializing in Electronic & Embedded System Design. Developing AIoT wearables for muscle stress analysis (sEMG/IMU sensors).",
+    tech: [
+      { name: "Robotics", icon: BsCpu },
+      { name: "Python", icon: SiPython },
+      { name: "ESP32", icon: SiArduino },
+      { name: "Research", icon: BiGitBranch }
+    ],
+    color: "#10b981" // Signal Green
+  },
+  {
+    role: "Digital Media Specialist",
+    company: "Fiverr",
+    location: "Freelance Platform",
+    period: "2019 - 2022",
+    status: "completed",
+    description:
+      "Managed complex client projects delivering high-fidelity 3D assets and video content. Developed strong workflow discipline and client communication skills before pivoting to engineering. Maintained a 98% client satisfaction rate across 50+ projects.",
+    tech: [
+      { name: "Project Management", icon: BiGitBranch },
+      { name: "3D Design", icon: BiChip }
+    ],
+    color: "#64748b" // Slate (de-emphasized)
+  }
+];
 
-    {/* Animated gradient border */}
-    <div className="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-blue-500 to-blue-500 rounded-lg opacity-0 group-hover:opacity-100 animate-gradient-xy transition-all duration-500" />
-
-    <div className="relative bg-gray-900/90 rounded-lg p-8 h-full border border-gray-800 shadow-xl backdrop-blur-xl">
-      {/* Floating icon with pulse effect */}
-      <div className="relative mb-6">
-        <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 to-blue-500 opacity-25 rounded-full blur-xl group-hover:opacity-75 animate-pulse transition-all duration-1000" />
-        <Icon className="w-12 h-12 text-pink-400 relative z-10 transform group-hover:rotate-1 transition-transform duration-100" />
+const TimelineItem = ({ item, index, isLast }) => {
+  return (
+    <div className="relative group">
+      {/* Timeline Dot */}
+      <div
+        className="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-4 border-[#0a0f1e] transition-all duration-300 group-hover:scale-125"
+        style={{ backgroundColor: item.color }}
+      >
+        {item.status === 'active' && (
+          <div
+            className="absolute inset-0 rounded-full animate-ping"
+            style={{ backgroundColor: item.color, opacity: 0.75 }}
+          />
+        )}
       </div>
 
-      {/* Content with improved typography */}
-      <div className="space-y-3">
-        <h3 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
-          {title}
-        </h3>
-        <div className="flex justify-between items-center text-gray-300">
-          <span className="font-semibold text-blue-400">{company}</span>
-          <span className="text-sm font-mono bg-blue-500/10 px-3 py-1 rounded-full">
-            {period}
+      {/* Connecting Line Glow on Hover */}
+      {!isLast && (
+        <div className="absolute -left-[33px] top-6 w-0.5 h-full bg-slate-800 group-hover:bg-blue-500/50 transition-colors duration-300" />
+      )}
+
+      {/* Content Card */}
+      <div className="pb-12 pl-0">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-3 gap-2">
+          <h3 className="text-xl md:text-2xl font-bold text-slate-100 font-mono">
+            {item.role}
+          </h3>
+          <span
+            className="font-mono text-sm px-3 py-1 rounded-md border inline-block w-fit"
+            style={{
+              borderColor: item.color,
+              backgroundColor: `${item.color}10`,
+              color: item.color
+            }}
+          >
+            {item.period}
           </span>
         </div>
-        <p className="text-gray-300 border-l-4 border-blue-500/50 pl-4 mt-4 leading-relaxed">
-          {description}
-        </p>
-      </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-4 right-4 w-20 h-20">
-        <div className="absolute top-0 right-0 w-6 h-[2px] bg-pink-500/50" />
-        <div className="absolute top-0 right-0 w-[2px] h-6 bg-pink-500/50" />
-      </div>
-      <div className="absolute bottom-4 left-4 w-20 h-20">
-        <div className="absolute bottom-0 left-0 w-6 h-[2px] bg-blue-500/50" />
-        <div className="absolute bottom-0 left-0 w-[2px] h-6 bg-blue-500/50" />
+        {/* Company & Location */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
+          <span className="text-slate-300 font-semibold">{item.company}</span>
+          <span className="hidden sm:block text-slate-600">•</span>
+          <span className="text-slate-500 text-sm font-mono">{item.location}</span>
+        </div>
+
+        {/* Description */}
+        <p className="text-slate-400 leading-relaxed mb-5 max-w-3xl">
+          {item.description}
+        </p>
+
+        {/* Tech Stack Tags */}
+        <div className="flex flex-wrap gap-2">
+          {item.tech.map((tech, idx) => {
+            const TechIcon = tech.icon;
+            return (
+              <span
+                key={idx}
+                className="px-3 py-1.5 bg-slate-900/50 text-slate-300 text-xs md:text-sm font-mono rounded-md border border-slate-700 hover:border-slate-600 transition-colors flex items-center gap-2 group/tag"
+              >
+                <TechIcon className="w-3.5 h-3.5 group-hover/tag:scale-110 transition-transform" />
+                {tech.name}
+              </span>
+            );
+          })}
+        </div>
+
+        {/* Circuit trace animation on hover */}
+        <div className="absolute left-0 top-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/0 to-transparent group-hover:via-blue-500/30 transition-all duration-500 pointer-events-none" />
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ExperienceSection = () => {
-  const experiences = [
-    {
-      icon: Network,
-      title: "3D Animator & Video Editor",
-      company: "Fiverr",
-      period: "2019 - 2022",
-      description:
-        "Produced a wide range of 3D animations and video content for various clients. My work involved the entire production pipeline, from conceptualization and storyboarding to modeling, animation, rendering, and post-production.",
-    },
-    {
-      icon: Layers,
-      title: "IT Technician & Web Developer",
-      company: "Sihanada",
-      period: "2016 - 2019",
-      description:
-        "Managed and maintained the IT infrastructure at a local media grid. I also developed and maintained web applications, contributing to a variety of digital projects and ensuring the smooth operation of our online presence.",
-    },
-    {
-      icon: Code2,
-      title: "Open Source Contributor",
-      company: "Various Projects",
-      period: "2023 - Present",
-      description:
-        "Actively contributed to a number of open-source projects, focusing primarily on JavaScript-based technologies. My contributions include bug fixes, feature development, and documentation.",
-    },
-  ];
-
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-b relative overflow-hidden pt-32 pb-20">
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-[#0f0f0f]" />
+    <main className="min-h-screen bg-[#0a0f1e] text-white relative overflow-hidden pt-16 md:pt-20 pb-24 md:pb-20">
+      {/* PCB Grid Background */}
+      <div className="absolute inset-0 pcb-grid-bg opacity-20 pointer-events-none" />
 
-        {/* Grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.15)_2px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.15)_1px,transparent_1px)] bg-[size:400px_400px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_10%)]" />
+      {/* Gradient Accents */}
+      <div className="absolute top-20 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl" />
 
-        {/* Animated particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-pink-400  rounded-full animate-float"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Content container */}
-        <div className="relative container mx-auto px-6 mt-10">
-          {/* Section header with enhanced effects */}
-          <div className="flex flex-col items-center space-y-8 mb-20">
-            <div className="relative">
-              <h2 className="text-5xl md:text-7xl font-black text-transparent bg-gradient-to-r from-pink-400 to-blue-500 bg-clip-text text-center">
-                Professional Journey
-              </h2>
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-pink-500/20 to-blue-500/20 blur-3xl rounded-full" />
-            </div>
-            <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
-              ගහන්න ඕන වෙලාවෙ අතගාපු එක තමා වැරැද්ද!!
-              |    |
-              "It's not what we do once in a while that shapes our lives. It's what we do consistently." - Tony Robbins
-            </p>
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
+            <BiGitBranch className="w-4 h-4 text-blue-400" />
+            <span className="text-sm font-mono text-blue-400">COMMIT HISTORY</span>
           </div>
 
-          {/* Experience grid with improved layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            {experiences.map((exp, index) => (
-              <ExperienceCard key={index} {...exp} />
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
+            <span className="text-blue-400">./</span> Engineering Timeline
+          </h2>
+
+          <p className="text-slate-400 text-lg font-mono leading-relaxed">
+            Building scalable hardware and software systems.
+          </p>
+        </div>
+
+        {/* Timeline */}
+        <div className="max-w-4xl mx-auto">
+          <div className="border-l-2 border-slate-800 ml-3 pl-8 md:pl-12 relative">
+            {experience.map((item, index) => (
+              <TimelineItem
+                key={index}
+                item={item}
+                index={index}
+                isLast={index === experience.length - 1}
+              />
             ))}
+
+            {/* Timeline End Marker */}
+            <div className="absolute -left-[33px] bottom-0 h-12 w-0.5 bg-gradient-to-b from-slate-800 to-transparent" />
+          </div>
+
+          {/* Timeline Legend */}
+          <div className="mt-12 p-6 border border-slate-800 rounded-lg bg-slate-950/50 backdrop-blur-sm">
+            <h3 className="text-sm font-mono text-slate-500 mb-3">LEGEND:</h3>
+            <div className="flex flex-wrap gap-4 text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse" />
+                <span className="text-slate-400">Active Position</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-slate-600" />
+                <span className="text-slate-400">Completed</span>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Enhanced background effects */}
-        <div className="absolute top-10 left-20 w-56 h-56 bg-pink-500/50 rounded-full filter blur-3xl animate-pulse" />
-        <div className="absolute bottom-[] right-20 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-pulse delay-1000" />
       </div>
-    </>
+
+      <style jsx>{`
+        .pcb-grid-bg {
+          background-image: 
+            linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+          background-size: 50px 50px;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+
+        .animate-pulse {
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+      `}</style>
+    </main>
   );
 };
 
