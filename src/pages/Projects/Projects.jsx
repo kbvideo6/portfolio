@@ -1,6 +1,6 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
-import { ExternalLink, Cpu, Server, Activity } from "lucide-react";
+import { ExternalLink, Cpu, Server, Activity, MapPin } from "lucide-react";
 
 const projects = [
   {
@@ -11,7 +11,7 @@ const projects = [
       "Designed a custom multi-layer PCB for a disaster recovery rover. Integrated mmWave radar sensors to detect human vitals under debris, processing signals locally on an ESP32 before transmitting to a central command unit via LoRa.",
     stack: ["Altium Designer", "ESP32", "C++", "mmWave", "LoRa"],
     icon: Cpu,
-    links: { code: "#", schematic: "#" },
+    links: { ongoing: true },
     status: "Prototype",
     statusColor: "#3b82f6",
     color: "#3b82f6",
@@ -24,7 +24,7 @@ const projects = [
       "Architected the backend for a commercial IoT vape detector. Built a high-throughput data ingestion API to handle real-time events from hundreds of devices, implementing JWT authentication and WebSocket-based live alerts.",
     stack: ["Node.js", "MongoDB", "React", "MQTT", "JWT"],
     icon: Server,
-    links: { code: "#", demo: "#" },
+    links: { demo: "https://farda-api.onrender.com" },
     status: "Production",
     statusColor: "#10b981",
     color: "#10b981",
@@ -37,10 +37,23 @@ const projects = [
       "Developed a sensor fusion algorithm to correlate muscle activity (sEMG) with motion data (IMU). Created a Python-based processing pipeline to identify muscle fatigue thresholds in real-time for wearable health monitoring.",
     stack: ["Python", "NumPy/SciPy", "sEMG", "IMU", "ML"],
     icon: Activity,
-    links: { code: "#", paper: "#" },
+    links: { ongoing: true },
     status: "Research",
     statusColor: "#06b6d4",
     color: "#06b6d4",
+  },
+  {
+    id: "04",
+    title: "Full-Stack Vehicle GPS Tracking System",
+    category: "Full-Stack // IoT",
+    description:
+      "Engineered a comprehensive vehicle telemetry system integrating embedded hardware (Arduino/ESP32 and GSM modules) with a custom web interface. Developed a full-stack MERN application to monitor and display real-time data, including vehicle speed (km/h), altitude (m), and precise location coordinates.",
+    stack: ["Node.js", "React", "ESP32", "GSM", "GPS"],
+    icon: MapPin,
+    links: { code: "https://github.com/kbvideo6/arduino-mern-gps-tracker.git", demo: "https://arduinotracker.netlify.app/" },
+    status: "Active",
+    statusColor: "#eab308",
+    color: "#eab308",
   },
 ];
 
@@ -163,32 +176,47 @@ export default function Projects() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3 mt-auto">
-                      <a
-                        href={project.links.code}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-300 rounded-md hover:bg-slate-800 hover:text-white transition-colors"
-                      >
-                        <FaGithub className="w-4 h-4" />
-                        View Code
-                      </a>
-                      <a
-                        href={Object.values(project.links)[1] || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono text-white rounded-md transition-colors shadow-lg"
-                        style={{
-                          backgroundColor: project.color,
-                          boxShadow: `0 4px 14px ${project.color}30`,
-                        }}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        {project.links.schematic
-                          ? "Schematic"
-                          : project.links.demo
-                            ? "Live Demo"
-                            : "Paper"}
-                      </a>
+                      {project.links.ongoing ? (
+                        <div
+                          className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-400 rounded-md bg-slate-800/50 cursor-not-allowed"
+                        >
+                          <Activity className="w-4 h-4 animate-pulse opacity-70" />
+                          In Progress / Ongoing
+                        </div>
+                      ) : (
+                        <>
+                          {project.links.code && (
+                            <a
+                              href={project.links.code}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-300 rounded-md hover:bg-slate-800 hover:text-white transition-colors"
+                            >
+                              <FaGithub className="w-4 h-4" />
+                              View Code
+                            </a>
+                          )}
+                          {(project.links.demo || project.links.schematic || project.links.paper) && (
+                            <a
+                              href={project.links.demo || project.links.schematic || project.links.paper}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono text-white rounded-md transition-colors shadow-lg hover:opacity-90"
+                              style={{
+                                backgroundColor: project.color,
+                                boxShadow: `0 4px 14px ${project.color}30`,
+                              }}
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              {project.links.demo
+                                ? "Live Demo"
+                                : project.links.schematic
+                                  ? "Schematic"
+                                  : "Paper"}
+                            </a>
+                          )}
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

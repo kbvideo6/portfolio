@@ -16,10 +16,9 @@ const GridBackground = () => {
 
 export default function Hero() {
   const words = [
-    "Embedded Systems Engineer",
-    "PCB Designer & IoT Developer",
-    "Hardware meets Software",
-    "Building the Future of IoT",
+    "PCB Design",
+    "Software",
+    "Embedded Systems",
   ];
 
   const [code] = useState(`
@@ -132,13 +131,7 @@ const engineer = {
               <div className="absolute hidden lg:-top-20 lg:-left-20 lg:block w-48 h-48 lg:w-64 lg:h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
               <div className="absolute hidden lg:block lg:top-40 lg:-right-20 w-48 h-48 lg:w-64 lg:h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
 
-              {/* Welcome badge */}
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-ful">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse status-online"></div>
-                <span className="text-gray-300 text-xs sm:text-sm font-medium">
-                  Available for Projects
-                </span>
-              </div>
+
 
               {/* Name section */}
               <div className="relative mb-6 sm:mb-8">
@@ -151,24 +144,23 @@ const engineer = {
                 </h1>
                 {/* Technical Headline */}
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-300 mt-3 leading-relaxed">
-                  Bridging the Gap Between <span className="text-blue-400">Hardware</span> and the <span className="text-green-400">Cloud</span>.
+                  Engineering <span className="text-blue-400">Electronic</span> and <span className="text-green-400">Embedded Systems</span>.
                 </h2>
                 {/* Subtitle */}
                 <p className="text-base sm:text-lg text-gray-400 mt-2 font-mono">
                   Electronic & Embedded Systems Undergraduate | PCB Designer | MERN Stack Developer
                 </p>
 
-                <div className="absolute -z-10 top-1/2 -translate-y-1/2 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+                <div className="absolute -z-10 top-1/2 -translate-y-1/2 left-1/4 w-12 sm:w-16 h-12 sm:h-16 bg-blue-500/20 rounded-full blur-xl animate-pulse"></div>
               </div>
-              {/* Role badge */}
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-slate-700 mb-4 sm:mb-6 backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s">
-                <i className="fas fa-microchip text-blue-400 animate-pulse text-sm sm:text-base"></i>
-                <span>
-                  <FlipWords
-                    className={"text-lg sm:text-xl text-blue-400 font-medium"}
-                    words={words}
-                  />
-                </span>
+              {/* Technical Domains */}
+              <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-[#0a0f18] border border-slate-800 mb-4 sm:mb-6 font-mono backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s shadow-[0_0_10px_rgba(34,197,94,0.05)]">
+                <span className="text-gray-500 font-bold mr-3">{'>'}</span>
+                <FlipWords
+                  className={"text-green-400 font-medium text-sm sm:text-base p-0 m-0"}
+                  words={words}
+                />
+                <span className="w-2 h-4 sm:h-5 bg-green-500 animate-pulse ml-2 opacity-80"></span>
               </div>
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate__animated animate__fadeInUp animate__delay-2s">

@@ -7,7 +7,7 @@ export default function About() {
       <section id="about" className="pt-4 md:pt-6 pb-24 md:pb-20 text-white bg-[#04081A]">
         <div className="mx-auto max-w-5xl space-y-8 px-6 md:px-8 md:space-y-16">
           <h2 className="relative z-10 max-w-4xl text-4xl font-medium lg:text-5xl text-white font-mono">
-            Full-Stack Engineer: From <span className="text-blue-400">PCB Layout</span> to <span className="text-green-400">Cloud APIs</span>
+            Electronic <span className="text-blue-400">&</span> Embedded <span className="text-green-400">Systems Designer</span>
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
             <div className="relative mb-6 sm:mb-0">
@@ -27,22 +27,22 @@ export default function About() {
                 I am an undergraduate at the <span className="text-blue-400 font-semibold">University of Sri Jayewardenepura</span>, specializing in <span className="text-green-400 font-semibold">Electronic and Embedded System Design</span>. Unlike traditional developers, I understand the full stack—from the PCB layout and voltage regulation to the backend API and frontend dashboard.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                Currently, I am focused on solving real-world problems through IoT, such as designing rescue rovers (<span className="text-blue-400 font-semibold">LifeSeeker</span>) and wearable health monitors. My workflow combines precise hardware engineering with scalable software architecture.
+                I specialize in Electronic and Embedded System Design, focusing on custom hardware and firmware development. My recent work includes engineering an AIoT wearable sEMG/IMU device for biometric monitoring and developing integrated GPS tracking hardware.
               </p>
 
               <div className="pt-6">
                 <blockquote className="border-l-4 border-gray-300 pl-4">
                   <p className="text-gray-300 italic leading-relaxed">
-                    "The best engineers don't just write code or design circuits—they bridge both worlds to create intelligent, connected systems that solve real problems."
+                    "Design is not just what it looks like and feels like. Design is how it works."
                   </p>
 
                   <div className="mt-6 space-y-3">
                     <cite className="block font-medium text-white">
-                      Nisal Chathuranga
+                      Steve Jobs
                     </cite>
                     <div className="flex items-center gap-2 font-mono text-sm">
-                      <i className="fas fa-microchip text-blue-400"></i>
-                      <span className="text-gray-400">Embedded Systems & IoT Engineer</span>
+                      <i className="fas fa-lightbulb text-yellow-500"></i>
+                      <span className="text-gray-400">Co-founder, Apple Inc.</span>
                     </div>
                   </div>
                 </blockquote>

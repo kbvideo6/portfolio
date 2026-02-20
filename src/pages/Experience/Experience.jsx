@@ -22,13 +22,29 @@ const experience = [
     color: "#3b82f6" // Electric Blue
   },
   {
-    role: "Undergraduate Researcher & Team Lead",
-    company: "University of Sri Jayewardenepura",
-    location: "Physics Department - USJ",
-    period: "2023 - PRESENT",
+    role: "Backend Developer (JavaScript & Python)",
+    company: "Freelance",
+    location: "Remote / Freelance",
+    period: "2025 - PRESENT",
     status: "active",
     description:
-      "Leading the engineering of 'LifeSeeker,' a disaster recovery rover utilizing mmWave radar and custom sensor arrays. Specializing in Electronic & Embedded System Design. Developing AIoT wearables for muscle stress analysis (sEMG/IMU sensors).",
+      "Developing robust backend architectures and data ingestion APIs. Utilizing Python and JavaScript to build scalable infrastructure that bridges embedded hardware solutions with the cloud.",
+    tech: [
+      { name: "Python", icon: SiPython },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "JavaScript", icon: BiChip },
+      { name: "Architecture", icon: BiGitBranch }
+    ],
+    color: "#eab308" // Yellow (for Python/JS backend focus)
+  },
+  {
+    role: "Hardware System Design & IoT Project Team Lead",
+    company: "University of Sri Jayewardenepura",
+    location: "Physics Department - USJ",
+    period: "2025 - PRESENT",
+    status: "active",
+    description:
+      "Directing a high-stakes, competitive SLIOT hardware project. Leading the end-to-end engineering of advanced IoT systems under rigorous constraints and strict deadlines, encompassing rapid prototyping, sensor integration, and system architecture.",
     tech: [
       { name: "Robotics", icon: BsCpu },
       { name: "Python", icon: SiPython },
@@ -38,16 +54,16 @@ const experience = [
     color: "#10b981" // Signal Green
   },
   {
-    role: "Digital Media Specialist",
+    role: "Freelance Video & Animation Specialist",
     company: "Fiverr",
     location: "Freelance Platform",
     period: "2019 - 2022",
     status: "completed",
     description:
-      "Managed complex client projects delivering high-fidelity 3D assets and video content. Developed strong workflow discipline and client communication skills before pivoting to engineering. Maintained a 98% client satisfaction rate across 50+ projects.",
+      "Launched freelance career delivering 200+ projects. Specialized in motion graphics and video editing utilizing Adobe After Effects and Premiere Pro.",
     tech: [
       { name: "Project Management", icon: BiGitBranch },
-      { name: "3D Design", icon: BiChip }
+      { name: "Video Edition", icon: BiChip }
     ],
     color: "#64748b" // Slate (de-emphasized)
   }

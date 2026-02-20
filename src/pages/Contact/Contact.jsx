@@ -117,8 +117,8 @@ export default function Contact() {
                 </h3>
                 <p className="text-slate-400 leading-relaxed">
                   I am currently available for freelance projects and full-time
-                  engineering roles. Whether you need a custom PCB design, an IoT
-                  backend, or a full-stack dashboard — let's discuss the technical
+                  engineering roles. Whether you need a custom PCB design,
+                  robust backend architecture, or an IoT system — let's discuss the technical
                   requirements.
                 </p>
               </div>
@@ -131,10 +131,10 @@ export default function Contact() {
                   <div>
                     <h4 className="text-xs font-mono text-slate-500 mb-0.5">EMAIL</h4>
                     <a
-                      href="mailto:nisal.chathu.eng@gmail.com"
+                      href="mailto:as20240419@sci.sjp.ac.lk"
                       className="hover:text-blue-400 transition-colors font-mono text-sm"
                     >
-                      nisal.chathu.eng@gmail.com
+                      as20240419@sci.sjp.ac.lk
                     </a>
                   </div>
                 </div>
@@ -157,7 +157,7 @@ export default function Contact() {
                 </h4>
                 <div className="flex gap-4">
                   <a
-                    href="https://github.com/"
+                    href="https://github.com/kbvideo6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-400 hover:text-white hover:border-blue-500/50 transition-all group"
@@ -167,7 +167,7 @@ export default function Contact() {
                     <ExternalLink className="w-3 h-3 opacity-50" />
                   </a>
                   <a
-                    href="https://linkedin.com/"
+                    href="https://www.linkedin.com/in/nisal-chathuranga/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-400 hover:text-white hover:border-blue-500/50 transition-all group"
@@ -242,8 +242,8 @@ export default function Contact() {
                     <option value="Embedded Systems / PCB Design">
                       Embedded Systems / PCB Design
                     </option>
-                    <option value="Full-Stack Development (MERN)">
-                      Full-Stack Development (MERN)
+                    <option value="Backend Development">
+                      Backend Development
                     </option>
                     <option value="IoT Architecture">IoT Architecture</option>
                     <option value="Other">Other</option>
@@ -298,7 +298,7 @@ export default function Contact() {
         {/* Footer */}
         <div className="mt-16 pt-8 border-t border-slate-800 text-center">
           <p className="text-xs text-slate-600 font-mono">
-            &copy; {new Date().getFullYear()} Nisal Chathu. Engineered with React & precision.
+            &copy; {new Date().getFullYear()} Nisal Chathu
           </p>
         </div>
       </section>

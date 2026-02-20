@@ -166,7 +166,7 @@ const SkillsSection = () => {
         {/* Footer Note */}
         <div className="text-center mt-12 pt-8 border-t border-slate-800">
           <p className="text-xs text-slate-500 font-mono">
-            <span className="text-slate-600">//</span> Continuously expanding — currently exploring RTOS and edge computing
+            <span className="text-slate-600">//</span> Continuously expanding Altium PCB design, advanced Python, and electronics.
           </p>
         </div>
       </section>
