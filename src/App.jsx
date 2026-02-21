@@ -17,8 +17,8 @@ const PageWrapper = ({ children }) => {
       initial={{ scale: 0.99 }}
       animate={{ scale: 1 }}
       exit={{ scale: 1.01 }}
-      transition={{ duration: 0.15, ease: "easeInOut" }}
-      className="w-full min-h-screen"
+      transition={{ duration: 0.25, ease: "easeInOut" }}
+      className="w-full min-h-screen overflow-x-hidden"
     >
       {children}
     </motion.div>
