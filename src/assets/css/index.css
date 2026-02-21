@@ -393,6 +393,7 @@ pre[class*="language-"] {
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    background-color: #04081A;
   }
 
   code {

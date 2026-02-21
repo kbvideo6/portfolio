@@ -14,10 +14,10 @@ const Education = lazy(() => import("./pages/Education/Education"));
 const PageWrapper = ({ children }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.99 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 1.01 }}
-      transition={{ duration: 0.1, ease: "easeInOut" }}
+      initial={{ scale: 0.99 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 1.01 }}
+      transition={{ duration: 0.15, ease: "easeInOut" }}
       className="w-full min-h-screen"
     >
       {children}
