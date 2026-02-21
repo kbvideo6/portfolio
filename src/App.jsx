@@ -1,5 +1,7 @@
-import React, { useState, Suspense, lazy } from "react";
+import React, { useState, Suspense, lazy, useEffect } from "react";
 import "./assets/css/index.css";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Experience = lazy(() => import("./pages/Experience/Experience"));
 const Contact = lazy(() => import("./pages/Contact/Contact"));
@@ -9,14 +11,46 @@ const Hero = lazy(() => import("./pages/Hero/Hero"));
 const Skills = lazy(() => import("./pages/Skills/Skills"));
 const Education = lazy(() => import("./pages/Education/Education"));
 
-import { Route, Routes } from "react-router-dom";
+const PageWrapper = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.99 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 1.01 }}
+      transition={{ duration: 0.1, ease: "easeInOut" }}
+      className="w-full min-h-screen"
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export default function App() {
   const [isOnePage, setIsOnePage] = useState(false); // Toggle state
+  const location = useLocation();
+
+  useEffect(() => {
+    // Wait until fonts are loaded before removing the loader
+    const removeLoader = () => {
+      const loader = document.getElementById("initial-loader");
+      if (loader) {
+        loader.classList.add("hidden-loader");
+        setTimeout(() => {
+          loader.remove();
+        }, 300); // Wait for CSS transition to finish 
+      }
+    };
+
+    if (document.fonts) {
+      document.fonts.ready.then(removeLoader);
+    } else {
+      removeLoader();
+    }
+  }, []);
 
   return (
     <>
-      <Suspense fallback={<div className="flex h-screen w-full items-center justify-center text-white">Loading...</div>}>
+      <Suspense fallback={<div className="flex h-screen w-full items-center justify-center text-white bg-[#04081A]"></div>}>
         <Header />
         {/* Conditional Rendering */}
         {isOnePage ? (
@@ -30,14 +64,16 @@ export default function App() {
           </>
         ) : (
           // Router Mode: Use routes for navigation
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/education" element={<Education />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/projects" element={<Projects />} />
-          </Routes>
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageWrapper><Hero /></PageWrapper>} />
+              <Route path="/skills" element={<PageWrapper><Skills /></PageWrapper>} />
+              <Route path="/experience" element={<PageWrapper><Experience /></PageWrapper>} />
+              <Route path="/education" element={<PageWrapper><Education /></PageWrapper>} />
+              <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+              <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
+            </Routes>
+          </AnimatePresence>
         )}
       </Suspense>
     </>
