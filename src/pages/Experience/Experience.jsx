@@ -64,7 +64,7 @@ const experience = [
       "Launched freelance career delivering 200+ projects. Specialized in motion graphics and video editing utilizing Adobe After Effects and Premiere Pro.",
     tech: [
       { name: "Project Management", icon: BiGitBranch },
-      { name: "Video Edition", icon: BiChip }
+      { name: "Video Editing", icon: BiChip }
     ],
     color: "#64748b" // Slate (de-emphasized)
   }

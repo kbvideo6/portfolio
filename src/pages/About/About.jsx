@@ -17,7 +17,7 @@ export default function About() {
                 <img
                   src={HeroImg}
                   className="rounded-[15px] shadow block"
-                  alt="its owner of the web"
+                  alt="Nisal Chathu"
                   width={1207}
                   height={929}
                   loading="lazy"
@@ -27,10 +27,10 @@ export default function About() {
 
             <div className="relative space-y-4">
               <p className="text-gray-300 leading-relaxed">
-                I am an undergraduate at the <span className="text-blue-400 font-semibold">University of Sri Jayewardenepura</span>, specializing in <span className="text-green-400 font-semibold">Electronic and Embedded System Design</span>. Unlike traditional developers, I understand the full stack—from the PCB layout and voltage regulation to the backend API and frontend dashboard.
+                I am an undergraduate at the <span className="text-blue-400 font-semibold">University of Sri Jayewardenepura</span>, specializing in <span className="text-green-400 font-semibold">Electronic and Embedded Systems Design</span>. Unlike traditional developers, I understand the full stack—from the PCB layout and voltage regulation to the backend API and frontend dashboard.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                I specialize in Electronic and Embedded System Design, focusing on custom hardware and firmware development. My recent work includes engineering an AIoT wearable sEMG/IMU device for biometric monitoring and developing integrated GPS tracking hardware.
+                I specialize in Electronic and Embedded Systems Design, focusing on custom hardware and firmware development. My recent work includes engineering an AIoT wearable sEMG/IMU device for biometric monitoring and developing integrated GPS tracking hardware.
               </p>
 
               <div className="pt-6">
