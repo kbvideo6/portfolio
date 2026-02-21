@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 import { ExternalLink, Cpu, Server, Activity, MapPin } from "lucide-react";
-
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 const projects = [
   {
     id: "01",
@@ -210,9 +210,11 @@ export default function Projects() {
               <span className="text-sm font-mono text-blue-400">CASE STUDIES</span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold font-mono mb-4">
-              <span className="text-blue-400">./</span> Selected Projects
-            </h2>
+            <TypewriterTitle
+              prefix="./"
+              title="Selected Projects"
+              className="text-3xl md:text-4xl font-bold font-mono mb-4"
+            />
             <p className="text-slate-400 text-lg max-w-2xl">
               Engineering solutions from concept to deployment — PCB layouts, IoT architectures, and signal processing pipelines.
             </p>

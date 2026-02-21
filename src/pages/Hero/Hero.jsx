@@ -6,6 +6,7 @@ import Meteors from "@/components/ui/meteors";
 import PortfolioPage from "@/pages/About/About";
 import SparklesText from "@/components/ui/sparkles-text";
 import { FlipWords } from "@/components/ui/flip-words";
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 
 // Grid Background - Replacing the HexagonBackground
 const GridBackground = () => {
@@ -143,9 +144,11 @@ const engineer = {
                   </span>
                 </h1>
                 {/* Technical Headline */}
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-300 mt-3 leading-relaxed">
-                  Engineering <span className="text-blue-400">Electronic</span> and <span className="text-green-400">Embedded Systems</span>.
-                </h2>
+                <TypewriterTitle
+                  prefix=""
+                  title="Engineering Electronic and Embedded Systems."
+                  className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-300 mt-3 leading-relaxed"
+                />
                 {/* Subtitle */}
                 <p className="text-base sm:text-lg text-gray-400 mt-2 font-mono">
                   Electronic & Embedded Systems Undergraduate | PCB Designer | MERN Stack Developer

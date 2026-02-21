@@ -2,6 +2,7 @@ import React from "react";
 import { BookOpen, Award, CheckCircle2 } from "lucide-react";
 import { BsCpu } from "react-icons/bs";
 import { SiCoursera, SiUdemy } from "react-icons/si";
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 
 const EducationSection = () => {
   return (
@@ -21,9 +22,11 @@ const EducationSection = () => {
             <span className="text-sm font-mono text-blue-400">CREDENTIALS</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
-            <span className="text-blue-400">./</span> Education & Certifications
-          </h2>
+          <TypewriterTitle
+            prefix="./"
+            title="Education & Certifications"
+            className="text-4xl md:text-5xl font-bold mb-6 font-mono justify-center"
+          />
 
           <p className="text-slate-400 text-lg font-mono">
             Formal engineering foundation + continuous technical upskilling

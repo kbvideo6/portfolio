@@ -14,6 +14,7 @@ import {
 import { TbCircuitResistor, TbBrandVscode } from "react-icons/tb";
 import { BsCpu } from "react-icons/bs";
 import { BiChip } from "react-icons/bi";
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 
 const skillGroups = [
   {
@@ -138,9 +139,11 @@ const SkillsSection = () => {
             <span className="text-sm font-mono text-blue-400">TECHNICAL STACK</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold font-mono mb-4">
-            The Full <span className="text-blue-400">IoT</span> Stack
-          </h2>
+          <TypewriterTitle
+            prefix="./"
+            title="The Full IoT Stack"
+            className="text-4xl md:text-5xl font-bold font-mono mb-4 justify-center"
+          />
 
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-mono">
             Hardware → Firmware → Cloud: Complete end-to-end engineering workflow

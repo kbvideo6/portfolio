@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Send, MapPin, Mail, ExternalLink } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -97,9 +97,11 @@ export default function Contact() {
             <span className="text-sm font-mono text-blue-400">OPEN CHANNEL</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 font-mono">
-            <span className="text-blue-400">./</span> Contact Interface
-          </h2>
+          <TypewriterTitle
+            prefix="./"
+            title="Contact Interface"
+            className="text-4xl md:text-5xl font-bold mb-4 font-mono justify-center"
+          />
 
           <p className="text-slate-400 text-lg font-mono">
             Available for engineering roles and freelance projects

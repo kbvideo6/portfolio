@@ -2,6 +2,7 @@ import React from "react";
 import { BiChip, BiGitBranch } from "react-icons/bi";
 import { BsCpu } from "react-icons/bs";
 import { SiAltiumdesigner, SiReact, SiNodedotjs, SiMongodb, SiPython, SiArduino } from "react-icons/si";
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 
 const experience = [
   {
@@ -162,9 +163,11 @@ const ExperienceSection = () => {
             <span className="text-sm font-mono text-blue-400">COMMIT HISTORY</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-mono">
-            <span className="text-blue-400">./</span> Engineering Timeline
-          </h2>
+          <TypewriterTitle
+            prefix="./"
+            title="Engineering Timeline"
+            className="text-4xl md:text-5xl font-bold mb-6 font-mono"
+          />
 
           <p className="text-slate-400 text-lg font-mono leading-relaxed">
             Building scalable hardware and software systems.

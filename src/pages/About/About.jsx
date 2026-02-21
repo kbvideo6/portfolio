@@ -1,14 +1,16 @@
 import HeroImg from "@/assets/images/IMG_0350.webp";
 import LogoT from "@/assets/images/logo_t.webp";
-
+import TypewriterTitle from "@/components/ui/TypewriterTitle";
 export default function About() {
   return (
     <>
       <section id="about" className="pt-4 md:pt-6 pb-24 md:pb-20 text-white bg-[#04081A]">
         <div className="mx-auto max-w-5xl space-y-8 px-6 md:px-8 md:space-y-16">
-          <h2 className="relative z-10 max-w-4xl text-4xl font-medium lg:text-5xl text-white font-mono">
-            Electronic <span className="text-blue-400">&</span> Embedded <span className="text-green-400">Systems Designer</span>
-          </h2>
+          <TypewriterTitle
+            prefix=""
+            title="Electronic & Embedded Systems Designer"
+            className="relative z-10 max-w-4xl text-4xl font-medium lg:text-5xl text-white font-mono"
+          />
           <div className="grid gap-6 sm:grid-cols-2 md:gap-12 lg:gap-24">
             <div className="relative mb-6 sm:mb-0">
               <div className="bg-linear-to-b aspect-76/59 relative rounded-2xl p-px from-zinc-300 to-transparent">
