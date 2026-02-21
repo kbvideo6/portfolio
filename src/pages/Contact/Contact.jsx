@@ -104,7 +104,7 @@ export default function Contact() {
           />
 
           <p className="text-slate-400 text-lg font-mono">
-            Available for engineering roles and freelance projects
+            Available for projects
           </p>
         </div>
 
@@ -115,7 +115,7 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-bold text-white mb-4 font-mono">
-                  Let's Engineer the Future.
+                  Let's Build the Future.
                 </h3>
                 <p className="text-slate-400 leading-relaxed">
                   I am currently available for freelance projects and full-time

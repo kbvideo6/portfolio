@@ -144,7 +144,7 @@ const engineer = {
                 </h1>
                 {/* Technical Headline */}
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-300 mt-3 leading-relaxed">
-                  Engineering <span className="text-blue-400">Electronic</span> and <span className="text-green-400">Embedded Systems</span>.
+                  <span className="text-blue-400">Electronic</span> and <span className="text-green-400">Embedded Systems</span>.
                 </h2>
                 {/* Subtitle */}
                 <p className="text-base sm:text-lg text-gray-400 mt-2 font-mono">
