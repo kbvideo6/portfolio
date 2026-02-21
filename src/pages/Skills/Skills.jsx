@@ -142,7 +142,7 @@ const SkillsSection = () => {
           <TypewriterTitle
             prefix="./"
             title="The Full IoT Stack"
-            className="text-4xl md:text-5xl font-bold font-mono mb-4 justify-center"
+            className="text-4xl md:text-5xl font-bold font-mono mb-4"
           />
 
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-mono">

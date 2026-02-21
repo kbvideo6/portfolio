@@ -20,17 +20,26 @@
   <!-- Google Fonts: Monospace for headings, Clean sans-serif for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" />
+  </noscript>
   <link rel="icon" type="image/svg+xml" href="/assets/logo_t-Beub80pS.png" />
   <link rel="shortcut icon" href="./src/assets/images/favicon.ico" type="image/x-icon">
-  <script type="module" crossorigin src="/assets/index-DNWMj8h-.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CUOgLW4A.css">
+  <style>#initial-loader{align-items:center;background-color:#04081a;display:flex;height:100vh;justify-content:center;left:0;position:fixed;top:0;transition:opacity .3s ease-in-out,visibility .3s ease-in-out;width:100vw;z-index:999999}#initial-loader.hidden-loader{opacity:0;visibility:hidden}.spinner{animation:spin 1s linear infinite;border:4px solid rgba(59,130,246,.2);border-left-color:#3b82f6;border-radius:50%;height:48px;width:48px}@keyframes spin{to{transform:rotate(1turn)}}</style>
+  <script type="module" crossorigin src="/assets/index-DwfGerjv.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DM-RhPqK.css">
 </head>
 
 <body>
+  <div id="initial-loader">
+    <div class="spinner"></div>
+  </div>
   <div id="root"></div>
 </body>
 

@@ -25,7 +25,7 @@ const EducationSection = () => {
           <TypewriterTitle
             prefix="./"
             title="Education & Certifications"
-            className="text-4xl md:text-5xl font-bold mb-6 font-mono justify-center"
+            className="text-4xl md:text-5xl font-bold mb-6 font-mono"
           />
 
           <p className="text-slate-400 text-lg font-mono">

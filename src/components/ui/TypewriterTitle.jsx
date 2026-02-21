@@ -29,7 +29,7 @@ const TypewriterTitle = ({ prefix = "./", title, className = "" }) => {
     }, [isInView, title]);
 
     return (
-        <h2 ref={containerRef} className={`${className} flex items-center flex-wrap`}>
+        <h2 ref={containerRef} className={className}>
             {prefix && <span className="text-blue-400 mr-2">{prefix}</span>}
             <span className="text-slate-100">{displayedText}</span>
             <motion.span

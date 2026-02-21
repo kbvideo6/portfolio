@@ -100,7 +100,7 @@ export default function Contact() {
           <TypewriterTitle
             prefix="./"
             title="Contact Interface"
-            className="text-4xl md:text-5xl font-bold mb-4 font-mono justify-center"
+            className="text-4xl md:text-5xl font-bold mb-4 font-mono"
           />
 
           <p className="text-slate-400 text-lg font-mono">
