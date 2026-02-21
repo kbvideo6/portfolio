@@ -47,6 +47,7 @@ export default function Header() {
                   key={id}
                   to={path}
                   onClick={() => setActiveLink(id)}
+                  aria-label={text}
                   className={`px-2 md:px-3 py-1.5 rounded-full text-sm font-medium
                     transition-all duration-300 flex items-center gap-2
                     hover:bg-white/10 
