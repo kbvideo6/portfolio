@@ -17,7 +17,7 @@ const TypewriterTitle = ({ prefix = "./", title, className = "" }) => {
 
         const typingInterval = setInterval(() => {
             if (i < title.length) {
-                setDisplayedText((prev) => prev + title.charAt(i));
+                setDisplayedText(title.slice(0, i + 1));
                 i++;
             } else {
                 clearInterval(typingInterval);
