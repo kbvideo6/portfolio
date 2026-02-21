@@ -10,7 +10,7 @@ export const cloudProps = {
       justifyContent: "center",
       alignItems: "center",
       width: "100%",
-     
+
     },
   },
   options: {
@@ -84,7 +84,7 @@ export default function IconCloud({
           imageArray.map((image, index) => {
             return (
               <a key={index} href="#" onClick={(e) => e.preventDefault()}>
-                <img height="42" width="42" alt="A globe" src={image} />
+                <img height="42" width="42" alt="A globe" src={image} loading="lazy" />
               </a>
             );
           })}

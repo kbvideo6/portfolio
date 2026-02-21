@@ -1,5 +1,5 @@
-import HeroImg from "@/assets/images/IMG_0350.JPG";
-import LogoT from "@/assets/images/logo_t.png";
+import HeroImg from "@/assets/images/IMG_0350.webp";
+import LogoT from "@/assets/images/logo_t.webp";
 
 export default function About() {
   return (
@@ -18,6 +18,7 @@ export default function About() {
                   alt="its owner of the web"
                   width={1207}
                   height={929}
+                  loading="lazy"
                 />
               </div>
             </div>

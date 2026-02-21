@@ -69,7 +69,7 @@ const experience = [
   }
 ];
 
-const TimelineItem = ({ item, index, isLast }) => {
+const TimelineItem = React.memo(({ item, index, isLast }) => {
   return (
     <div className="relative group">
       {/* Timeline Dot */}
@@ -142,7 +142,7 @@ const TimelineItem = ({ item, index, isLast }) => {
       </div>
     </div>
   );
-};
+});
 
 const ExperienceSection = () => {
   return (

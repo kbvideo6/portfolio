@@ -91,6 +91,7 @@ export default function EnhancedPortfolioCard() {
             <img
               src="/placeholder.svg?height=256&width=256"
               alt="Profile"
+              loading="lazy"
               className="rounded-full relative z-10 w-full h-full object-cover border-4 border-gray-700 group-hover:border-purple-500 transition-colors duration-300" />
           </motion.div>
           <motion.h1

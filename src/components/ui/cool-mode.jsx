@@ -65,7 +65,7 @@ const applyParticleEffect = (element, options) => {
 
       particle.appendChild(circleSVG);
     } else {
-      particle.innerHTML = `<img src="${particleType}" width="${size}" height="${size}" style="border-radius: 50%">`;
+      particle.innerHTML = `<img src="${particleType}" width="${size}" height="${size}" style="border-radius: 50%" loading="lazy">`;
     }
 
     particle.style.position = "absolute";

@@ -57,6 +57,140 @@ const projects = [
   },
 ];
 
+const ProjectCard = React.memo(({ project }) => {
+  const IconComponent = project.icon;
+  return (
+    <div className="group bg-slate-950/50 border border-slate-800 rounded-lg overflow-hidden hover:border-blue-500/40 transition-all duration-300 flex flex-col">
+      {/* Visual Header - Blueprint style */}
+      <div className="h-48 bg-slate-900/80 border-b border-slate-800 relative group-hover:bg-slate-800/80 transition-colors overflow-hidden">
+        {/* Grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+          }}
+        />
+
+        {/* Status Badge */}
+        <div
+          className="absolute top-4 right-4 backdrop-blur px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded border"
+          style={{
+            color: project.statusColor,
+            borderColor: `${project.statusColor}40`,
+            backgroundColor: `${project.statusColor}10`,
+          }}
+        >
+          {project.status}
+        </div>
+
+        {/* Project ID */}
+        <div className="absolute top-4 left-4 text-xs font-mono text-slate-600">
+          PRJ-{project.id}
+        </div>
+
+        {/* Center Icon */}
+        <div className="flex items-center justify-center h-full">
+          <div className="relative">
+            <IconComponent
+              className="w-12 h-12 transition-all duration-300 group-hover:scale-110"
+              style={{ color: `${project.color}60` }}
+            />
+            {/* Pulse ring */}
+            <div
+              className="absolute inset-0 rounded-full animate-ping opacity-20"
+              style={{ backgroundColor: project.color }}
+            />
+          </div>
+        </div>
+
+        {/* Corner accent lines */}
+        <div
+          className="absolute bottom-0 left-0 w-8 h-[2px] opacity-30"
+          style={{ backgroundColor: project.color }}
+        />
+        <div
+          className="absolute bottom-0 left-0 w-[2px] h-8 opacity-30"
+          style={{ backgroundColor: project.color }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-5 md:p-6 flex-1 flex flex-col">
+        <div className="text-xs font-mono mb-2" style={{ color: project.color }}>
+          {project.category}
+        </div>
+
+        <h3 className="text-lg md:text-xl font-bold text-slate-100 mb-3 font-mono">
+          {project.title}
+        </h3>
+
+        <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">
+          {project.description}
+        </p>
+
+        {/* Tech Stack Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {project.stack.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-0.5 bg-slate-900 text-slate-300 text-[10px] uppercase font-bold tracking-wider rounded border border-slate-700 font-mono"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex gap-3 mt-auto">
+          {project.links.ongoing ? (
+            <div
+              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-400 rounded-md bg-slate-800/50 cursor-not-allowed"
+            >
+              <Activity className="w-4 h-4 animate-pulse opacity-70" />
+              In Progress / Ongoing
+            </div>
+          ) : (
+            <>
+              {project.links.code && (
+                <a
+                  href={project.links.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-300 rounded-md hover:bg-slate-800 hover:text-white transition-colors"
+                >
+                  <FaGithub className="w-4 h-4" />
+                  View Code
+                </a>
+              )}
+              {(project.links.demo || project.links.schematic || project.links.paper) && (
+                <a
+                  href={project.links.demo || project.links.schematic || project.links.paper}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono text-white rounded-md transition-colors shadow-lg hover:opacity-90"
+                  style={{
+                    backgroundColor: project.color,
+                    boxShadow: `0 4px 14px ${project.color}30`,
+                  }}
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  {project.links.demo
+                    ? "Live Demo"
+                    : project.links.schematic
+                      ? "Schematic"
+                      : "Paper"}
+                </a>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
 export default function Projects() {
   return (
     <main className="pt-4 md:pt-6 pb-24 md:pb-20 bg-[#0a0f1e] text-white min-h-screen relative overflow-hidden">
@@ -86,142 +220,9 @@ export default function Projects() {
 
           {/* Project Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => {
-              const IconComponent = project.icon;
-              return (
-                <div
-                  key={project.id}
-                  className="group bg-slate-950/50 border border-slate-800 rounded-lg overflow-hidden hover:border-blue-500/40 transition-all duration-300 flex flex-col"
-                >
-                  {/* Visual Header - Blueprint style */}
-                  <div className="h-48 bg-slate-900/80 border-b border-slate-800 relative group-hover:bg-slate-800/80 transition-colors overflow-hidden">
-                    {/* Grid pattern overlay */}
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)",
-                        backgroundSize: "20px 20px",
-                      }}
-                    />
-
-                    {/* Status Badge */}
-                    <div
-                      className="absolute top-4 right-4 backdrop-blur px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-wider rounded border"
-                      style={{
-                        color: project.statusColor,
-                        borderColor: `${project.statusColor}40`,
-                        backgroundColor: `${project.statusColor}10`,
-                      }}
-                    >
-                      {project.status}
-                    </div>
-
-                    {/* Project ID */}
-                    <div className="absolute top-4 left-4 text-xs font-mono text-slate-600">
-                      PRJ-{project.id}
-                    </div>
-
-                    {/* Center Icon */}
-                    <div className="flex items-center justify-center h-full">
-                      <div className="relative">
-                        <IconComponent
-                          className="w-12 h-12 transition-all duration-300 group-hover:scale-110"
-                          style={{ color: `${project.color}60` }}
-                        />
-                        {/* Pulse ring */}
-                        <div
-                          className="absolute inset-0 rounded-full animate-ping opacity-20"
-                          style={{ backgroundColor: project.color }}
-                        />
-                      </div>
-                    </div>
-
-                    {/* Corner accent lines */}
-                    <div
-                      className="absolute bottom-0 left-0 w-8 h-[2px] opacity-30"
-                      style={{ backgroundColor: project.color }}
-                    />
-                    <div
-                      className="absolute bottom-0 left-0 w-[2px] h-8 opacity-30"
-                      style={{ backgroundColor: project.color }}
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5 md:p-6 flex-1 flex flex-col">
-                    <div className="text-xs font-mono mb-2" style={{ color: project.color }}>
-                      {project.category}
-                    </div>
-
-                    <h3 className="text-lg md:text-xl font-bold text-slate-100 mb-3 font-mono">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {project.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 bg-slate-900 text-slate-300 text-[10px] uppercase font-bold tracking-wider rounded border border-slate-700 font-mono"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-3 mt-auto">
-                      {project.links.ongoing ? (
-                        <div
-                          className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-400 rounded-md bg-slate-800/50 cursor-not-allowed"
-                        >
-                          <Activity className="w-4 h-4 animate-pulse opacity-70" />
-                          In Progress / Ongoing
-                        </div>
-                      ) : (
-                        <>
-                          {project.links.code && (
-                            <a
-                              href={project.links.code}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono border border-slate-700 text-slate-300 rounded-md hover:bg-slate-800 hover:text-white transition-colors"
-                            >
-                              <FaGithub className="w-4 h-4" />
-                              View Code
-                            </a>
-                          )}
-                          {(project.links.demo || project.links.schematic || project.links.paper) && (
-                            <a
-                              href={project.links.demo || project.links.schematic || project.links.paper}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-mono text-white rounded-md transition-colors shadow-lg hover:opacity-90"
-                              style={{
-                                backgroundColor: project.color,
-                                boxShadow: `0 4px 14px ${project.color}30`,
-                              }}
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              {project.links.demo
-                                ? "Live Demo"
-                                : project.links.schematic
-                                  ? "Schematic"
-                                  : "Paper"}
-                            </a>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
           </div>
         </div>
       </section>
