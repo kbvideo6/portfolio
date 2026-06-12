@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Send, MapPin, Mail, ExternalLink } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import TypewriterTitle from "@/components/ui/TypewriterTitle";
+import PayPalPayment from "@/components/PayPalPayment";
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,6 +13,18 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
+
+  useEffect(() => {
+    if (window.location.hash === "#payments") {
+      // Small timeout ensures the DOM has fully rendered the element before scrolling
+      setTimeout(() => {
+        const element = document.getElementById("payments");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, []);
 
   const validateForm = () => {
     let tempErrors = {};
@@ -179,6 +192,14 @@ export default function Contact() {
                     <ExternalLink className="w-3 h-3 opacity-50" />
                   </a>
                 </div>
+              </div>
+
+              {/* Payments Section */}
+              <div id="payments" className="pt-6 border-t border-slate-800 scroll-mt-24">
+                <h4 className="text-xs font-bold text-slate-500 uppercase mb-4 font-mono">
+                  Client Payments & Support
+                </h4>
+                <PayPalPayment />
               </div>
             </div>
 

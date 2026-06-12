@@ -1,1 +1,11 @@
 node_modules
+dist
+dist-ssr
+.env
+.env.*
+.DS_Store
+npm-cache
+graphify-out
+/out
+
+.agents

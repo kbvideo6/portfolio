@@ -176,6 +176,19 @@ const engineer = {
                     </span>
                   </span>
                 </a>
+
+                {/* Send Payment Button */}
+                <a
+                  href="/contact#payments"
+                  className="group relative inline-flex items-center justify-center gap-3 rounded-full transition-all duration-300 hover:scale-105"
+                >
+                  <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-emerald-600/10 border border-emerald-500/30 hover:bg-emerald-500/20 transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)] hover:shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                    <span className="relative flex items-center justify-center gap-2 text-emerald-400 font-medium">
+                      <i className="fas fa-credit-card transform transition-all duration-300 group-hover:-translate-y-0.5"></i>
+                      <span>Send Payment</span>
+                    </span>
+                  </span>
+                </a>
               </div>
             </div>
 
